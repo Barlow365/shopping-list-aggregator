@@ -1,3 +1,4 @@
+```text
 ================================================================================
 THE ONE LIST SYSTEM - RETAIL COCKPIT WIREFRAMES
 Capture  Decide  Shop  Close Loop  Scale Up
@@ -131,6 +132,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | QUICK ADD [milk, eggs, bread ___________________________] [Add]              |
 +--------------------------------------+---------------------------------------+
@@ -150,6 +152,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | STORE LENS: [All] [Kroger] [Target] [Home Depot] [+ Custom]                  |
 +--------------------------------------+---------------------------------------+
@@ -166,6 +169,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | BUDGET PANEL                                                               > |
 | Budget: [$150]   Est: $128   Delta: +$22                                      |
@@ -202,6 +206,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | UPLOAD RECEIPT [Choose File] [Upload]                                        |
 +--------------------------------------+---------------------------------------+
@@ -218,6 +223,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | ACTIVITY TIMELINE                                                           > |
 | - Sam added Milk                                                            |
@@ -234,6 +240,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | VOICE CAPTURE (COMING SOON)                                                  |
 | [Paste text instead _________________________________________] [Add]          |
@@ -245,6 +252,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | RECIPES                                                                      |
 | [Add Recipe]                                                                 |
@@ -259,6 +267,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | RECURRING RULES (stub)                                                       |
 | [Add Rule]                                                                   |
@@ -272,6 +281,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | DELIVERY                                                                      |
 | [Export List]                                                                 |
@@ -284,6 +294,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | POOLING / SPLITS                                                              |
 | Pool balance: stub                                                           |
@@ -296,6 +307,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | APPROVALS / CAPS                                                              |
 | - Cap: $50 per person (stub)                                                  |
@@ -308,6 +320,7 @@ Layout legend:
 +------------------------------------------------------------------------------+
 | LIST: Weekly Groceries                                Sync: Online  [Profile] |
 | TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
+| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
 +------------------------------------------------------------------------------+
 | UPGRADES                                                                      |
 | [Enable Voice] [Enable Recipes] [Enable Delivery] (feature flags)             |
@@ -331,3 +344,5 @@ SETTINGS / HELP / SYSTEM
 +------------------------------------------------------------------------------+
 | EMPTY STATES | OFFLINE BANNER | SYNC CONFLICTS | ERROR STATES                 |
 +------------------------------------------------------------------------------+
+
+```

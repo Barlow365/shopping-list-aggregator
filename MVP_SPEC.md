@@ -124,8 +124,7 @@ All features are included in MVP with phased execution. No feature is excluded; 
 | Recurring items | Recurring page stub | Manual recurrence | Auto add + forecasting |
 | Delivery | Delivery page stub | Export list for pickup | Partner integrations |
 | Pooling/split costs | Pooling page stub | Manual assignment | Split payments + approvals |
-| Notifications | Settings stub | Manual reminders (email) | Push + scheduling |
-| Analytics | Dashboard stub | Basic usage views | Advanced analytics |
+| Approvals/caps | Controls page stub | Manual approvals + caps | Automated gating |
 
 ---
 
