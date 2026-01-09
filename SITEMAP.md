@@ -41,6 +41,88 @@ This sitemap includes every feature with phased execution:
                 Invite members (link)
 ```
 
+---
+
+## ASCII Overview (Public + Entry)
+
+```
+PUBLIC / MARKETING                  AUTH / ENTRY
+
+/                            --->   /login  /signup
+/how-it-works                       /onboarding
+/features                           (create group + list)
+/pricing (placeholder)
+/privacy /terms
+```
+
+## ASCII Overview (App Home / Hub)
+
+```
+/app/home
+  - Active List Snapshot (budget, total, stores used, must items)
+  - Recent Activity (who added what)
+  - Quick Actions: Add Items | Shop Mode | Budget | Invite
+```
+
+## ASCII Overview (Groups + List Workspace)
+
+```
+GROUPS / HOUSEHOLDS                  THE LIST WORKSPACE (THE PRODUCT)
+
+/app/groups                    --->  /app/lists/:listId
+/app/groups/:groupId                  (tabs below)
+  - members + permissions
+  - 1 ACTIVE list selector
+  - archived lists
+```
+
+## ASCII Overview (List Workspace Tabs - All Features)
+
+```
+LIST WORKSPACE TABS (ALL FEATURES)
+Legend:  Active now    Manual/Placeholder    Stub/Coming Soon (wired)
+
+CAPTURE                         DECIDE
+
+  Items                       Budget
+ /items                       /budget
+ - quick add                  - running total
+ - split by commas            - over budget banner
+ - qty/notes                  - remove nice-to-have
+ - add-by tracking            - must-only filter
+
+  Stores                      Recipes
+ /stores                      /recipes
+ - assign store later         - manual recipe card
+ - unassigned bucket          - add ingredients
+ - filter by store            - cost/serving (stub)
+
+  Voice
+ /voice
+ - UI placeholder
+ - endpoint stub
+
+SHOP                            CLOSE THE LOOP
+
+  Shop Mode                    Receipts
+ /shop                         /receipts
+ - choose store                - upload photo
+ - big checklist               - manual match/prices
+ - offline checkoff            - update last paid
+
+  Delivery                     History
+ /delivery                     /history
+ - export list now             - past totals
+ - integrations stub           - price memory table
+
+SCALE UP
+
+  Recurring                    Pooling / Splits             Approvals / Caps
+ /recurring                    /pooling                      /controls
+ - rules stub                  - pool money stub             - expensive item gate
+ - forecast stub               - assign buyers stub          - per-person caps
+```
+
 ### Dashboard (Simple)
 
 ```
@@ -66,7 +148,7 @@ This sitemap includes every feature with phased execution:
 ```
 /app/lists              Optional index (if multiple archived lists exist)
 /app/lists/:listId      List home with tabs/modes
-                        Items | Store View | Budget | Shop Mode | Receipts | History | Upgrades
+                        Items | Store View | Budget | Shop Mode | Receipts | History | Voice | Recipes | Recurring | Delivery | Pooling | Controls | Upgrades
 ```
 
 ---
@@ -157,6 +239,14 @@ Name the sections as a product story so the structure is memorable.
   - Phase 0: stub page
   - Phase 1: manual assignment
   - Phase 2: split payments + approvals
+
+**/app/lists/:listId/controls**
+- Purpose: approvals and spending caps (phased)
+- Key UI blocks: approval rules, cap settings, pending approvals list
+- Phase behavior:
+  - Phase 0: stub page
+  - Phase 1: manual approval tagging
+  - Phase 2: automated gating + approvals
 
 **/app/lists/:listId/upgrades**
 - Purpose: surface future capabilities without blocking core use

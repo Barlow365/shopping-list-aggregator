@@ -108,6 +108,11 @@ This plan enumerates key pages, minimal components, and shared state/data needs.
 - `/app/lists/:listId/pooling`
   - Components: PoolSetupPanel, BuyerAssignmentTable, SplitSummary
 
+#### Approvals / Caps (Scale Up)
+
+- `/app/lists/:listId/controls`
+  - Components: ApprovalRulesList, AddCapRuleForm, PendingApprovalsQueue
+
 #### Upgrades
 
 - `/app/lists/:listId/upgrades`
@@ -148,6 +153,8 @@ This plan enumerates key pages, minimal components, and shared state/data needs.
 - PriceMemory (itemName, lastPaid, lastUpdated)
 - ActivityLog (actorId, action, entityId, timestamp)
 - FeatureFlags (feature, phase)
+- ApprovalRules (listId, ruleType, threshold, approvers)
+- ApprovalQueue (listId, itemId, status, requestedBy)
 
 ---
 
