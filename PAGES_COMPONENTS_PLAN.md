@@ -1,3 +1,8 @@
+================================================================================
+THE ONE LIST SYSTEM
+Capture  Decide  Shop  Close Loop  Scale Up
+================================================================================
+
 # Pages and Components Plan (MVP with Phased Execution)
 
 This plan enumerates key pages, minimal components, and shared state/data needs.

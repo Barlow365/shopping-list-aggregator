@@ -1,3 +1,8 @@
+================================================================================
+THE ONE LIST SYSTEM
+Capture  Decide  Shop  Close Loop  Scale Up
+================================================================================
+
 # Shopping List Aggregator - Full Sitemap + Route Map (MVP)
 
 Concept: the list is the home screen. Every advanced feature is a mode or layer on the same list.
