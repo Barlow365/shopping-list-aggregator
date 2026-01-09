@@ -36,10 +36,11 @@ The MVP validates:
 
 | Feature | Specification |
 |---------|---------------|
-| **Create List** | User can create a named list (e.g., "Weekly Groceries") |
+| **Create List** | User can create a named list (e.g., "Weekly Groceries") when no active list exists. One active list per user; prior lists can be archived (read-only). |
+| **Archive List** | Archive prior lists to keep one active list; archived lists are read-only |
 | **Invite Members** | Share list via link or email |
-| **Add Items** | Text input: "milk, cereal, bananas" auto-splits into separate items |
-| **Item Fields** | Name, quantity, optional store, optional price estimate |
+| **Add Items** | Text input: "milk, cereal, bananas" auto-splits into separate items. Items only come from user input inside a list; no product catalog or store database in MVP. |
+| **Item Fields** | Name, quantity, optional store (assigned later), optional price estimate |
 | **Real-time Sync** | Changes appear instantly for all list members |
 | **Item Status** | Mark items as "added to cart" or "purchased" |
 
@@ -66,7 +67,7 @@ The MVP validates:
 
 | Feature | Specification |
 |---------|---------------|
-| **Store Assignment** | Assign items to stores (Kroger, Target, Home Depot, etc.) |
+| **Store Assignment** | Optional and deferred. Items are store-agnostic at creation and assigned later via item edit, store filter, or entering Shopping Mode. |
 | **Store Filter** | "Show only [Store Name] items" |
 | **Multi-Store Support** | Same list, filtered by store |
 | **Store List** | Pre-populated common stores, plus "Add Custom Store" |
@@ -89,6 +90,8 @@ The MVP validates:
 | **Update Prices** | Actual prices update "last price paid" |
 | **Budget vs Actual** | Show "Budgeted: $150 / Actual: $163" |
 
+Receipt entry is exploratory; low usage is not failure and informs Phase 2 automation priorities.
+
 ---
 
 ## Out of Scope for MVP (v2+)
@@ -104,7 +107,7 @@ The following are explicitly excluded from MVP to maintain focus:
 - ❌ Digital shopping integrations (Instacart, DoorDash)
 - ❌ Product-level selection with photos
 - ❌ Recurring items / auto-add
-- ❌ Multiple lists per user (MVP = 1 list only)
+- ❌ Multiple active lists per user (MVP = 1 active list only; archived lists are read-only)
 - ❌ Advanced analytics
 - ❌ Push notifications
 
@@ -189,7 +192,7 @@ The following are explicitly excluded from MVP to maintain focus:
 
 ### Data Storage
 - User accounts (email + password)
-- Lists (name, budget, members)
+- Lists (name, budget, members, status: active/archived)
 - Items (name, quantity, store, price, priority, status)
 - Price history (item name → last paid price)
 
@@ -210,7 +213,7 @@ The following are explicitly excluded from MVP to maintain focus:
 | **Items added** | 2,000+ items added |
 | **Budget usage** | 70%+ of lists have budgets set |
 | **Over-budget actions** | 50%+ of over-budget lists take action (remove items) |
-| **Receipt uploads** | 30%+ of shopping sessions include receipt |
+| **Receipt uploads** | Track usage only; no minimum target (exploratory) |
 | **Cross-store usage** | 50%+ of users use multiple stores |
 
 ### Lagging Indicators (Track Monthly)
@@ -230,7 +233,6 @@ The following are explicitly excluded from MVP to maintain focus:
 | **Low budget adoption** | <30% of lists use budget feature |
 | **Single-store dominance** | >80% of items from one store type |
 | **High abandonment** | >50% of lists never get shopped |
-| **No price learning** | <10% of users enter receipt data |
 
 ---
 
