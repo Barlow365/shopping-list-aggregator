@@ -94,31 +94,38 @@ Receipt entry is exploratory; low usage is not failure and informs Phase 2 autom
 
 ---
 
-## Out of Scope for MVP (v2+)
+## MVP Rules (Non-Negotiables)
 
-The following are explicitly excluded from MVP to maintain focus:
+- Items only come from user input inside a list. No product catalog or store database in early phases.
+- Store assignment is optional and deferred; items are store-agnostic at creation and assigned later via item edit, store filter, or entering Shopping Mode.
+- One active list per user; prior lists can be archived (read-only).
+- Receipt entry is exploratory; low usage is not failure and informs Phase 2 automation priorities.
 
-### Deferred to Phase 2
-- ❌ Voice capture (natural language)
-- ❌ Recipe import
-- ❌ Aisle-by-aisle ordering
-- ❌ OCR receipt scanning (automated)
-- ❌ Group buying / neighborhood pooling
-- ❌ Digital shopping integrations (Instacart, DoorDash)
-- ❌ Product-level selection with photos
-- ❌ Recurring items / auto-add
-- ❌ Multiple active lists per user (MVP = 1 active list only; archived lists are read-only)
-- ❌ Advanced analytics
-- ❌ Push notifications
+---
 
-### Why These Are Deferred
-- **Voice capture**: Requires NLP, adds complexity, not core to validation
-- **Recipe import**: Nice-to-have, but manual entry validates core behavior
-- **Aisle ordering**: Requires store data partnerships
-- **OCR scanning**: Complex, manual entry validates receipt workflow
-- **Group buying**: Advanced feature, needs trust layer first
-- **Digital integrations**: Requires partnerships, API access
-- **Recurring items**: Smart feature, but manual re-entry validates use case
+## Phased Execution Within MVP
+
+All features are included in MVP with phased execution. No feature is excluded; each ships as a stub, then manual workflow, then automation/integrations.
+
+**Phase definitions**
+- **PHASE 0** = scaffolding, stubs, UI placeholders, feature flags
+- **PHASE 1** = manual workflow implementation
+- **PHASE 2** = automation, intelligence, integrations
+
+| Feature | Phase 0 (Stub) | Phase 1 (Manual) | Phase 2 (Automation) |
+|---------|-----------------|------------------|----------------------|
+| Shared list + members | Nav + list shell | Real-time list, invites | Advanced roles/permissions |
+| Budget tracking | Budget ribbon stub | Manual estimates + warnings | Smart suggestions |
+| Store views | Store filter stub | Manual store assignment | Store-level insights |
+| Shopping mode | Mode shell | Checklist + offline | Smart routing |
+| Receipt capture | Upload stub | Manual match + prices | OCR + auto reconciliation |
+| Voice capture | Voice page stub | Paste text as fallback | Voice NLP capture |
+| Recipes | Recipe page stub | Manual recipe cards | URL import + auto ingredients |
+| Recurring items | Recurring page stub | Manual recurrence | Auto add + forecasting |
+| Delivery | Delivery page stub | Export list for pickup | Partner integrations |
+| Pooling/split costs | Pooling page stub | Manual assignment | Split payments + approvals |
+| Notifications | Settings stub | Manual reminders (email) | Push + scheduling |
+| Analytics | Dashboard stub | Basic usage views | Advanced analytics |
 
 ---
 
