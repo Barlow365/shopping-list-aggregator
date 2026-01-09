@@ -18,6 +18,14 @@ Prove that people want one shared list across multiple stores with budget awaren
 
 ---
 
+## PRODUCT_MAP Binding
+
+This spec executes docs/PRODUCT_MAP.md.
+- Every feature and page is a node or zoom of PRODUCT_MAP.
+- Phases define how each PRODUCT_MAP node is delivered (stub, manual, automation).
+
+---
+
 ## Core Hypothesis
 
 The MVP validates:
@@ -79,7 +87,7 @@ The MVP validates:
 | **Simplified View** | Full-screen checklist optimized for in-store use |
 | **Large Tap Targets** | Easy to check off items with one hand |
 | **Offline Support** | Works without internet connection |
-| **Check-Off Action** | Tap item → marked "purchased" → moves to bottom |
+| **Check-Off Action** | Tap item -> marked "purchased" -> moves to bottom |
 
 ### 6. Receipt Scanning (Basic)
 
@@ -137,9 +145,9 @@ All features are included in MVP with phased execution. No feature is excluded; 
 2. Clicks "Create List"
 3. Names list "Weekly Groceries"
 4. Sets budget: $150
-5. Clicks "Share" → copies link
+5. Clicks "Share" -> copies link
 6. Sends link to household members via text
-7. Members click link → join list
+7. Members click link -> join list
 ```
 
 ### Flow 2: Add Items with Budget Tracking
@@ -160,7 +168,7 @@ All features are included in MVP with phased execution. No feature is excluded; 
 
 ```
 1. User arrives at store
-2. Opens app → clicks "Shopping Mode"
+2. Opens app -> clicks "Shopping Mode"
 3. Filters list by store: "Kroger only"
 4. Full-screen checklist appears
 5. User taps items as they're added to physical cart
@@ -200,7 +208,7 @@ All features are included in MVP with phased execution. No feature is excluded; 
 - User accounts (email + password)
 - Lists (name, budget, members, status: active/archived)
 - Items (name, quantity, store, price, priority, status)
-- Price history (item name → last paid price)
+- Price history (item name -> last paid price)
 
 ### Authentication
 - Email + password (simple, no OAuth for MVP)
@@ -282,11 +290,11 @@ All features are included in MVP with phased execution. No feature is excluded; 
 
 What this MVP explicitly does NOT do:
 
-- ❌ Solve all household needs (focus on groceries + essentials)
-- ❌ Replace existing shopping apps (complement, don't compete yet)
-- ❌ Monetize users (free during MVP, vendor revenue comes later)
-- ❌ Scale to thousands of users (optimize for 100-500 users first)
-- ❌ Be feature-complete (minimal features to validate hypothesis)
+- X Solve all household needs (focus on groceries + essentials)
+- X Replace existing shopping apps (complement, don't compete yet)
+- X Monetize users (free during MVP, vendor revenue comes later)
+- X Scale to thousands of users (optimize for 100-500 users first)
+- X Be feature-complete (minimal features to validate hypothesis)
 
 ---
 
@@ -294,10 +302,10 @@ What this MVP explicitly does NOT do:
 
 Before adding any feature to MVP, ask:
 
-1. **Does it validate a core hypothesis?** (shared list, budget trust, multi-store)
-2. **Can we learn without it?** (if yes, defer)
-3. **Is it technically simple?** (if no, defer)
-4. **Will users tolerate manual workarounds?** (if yes, defer)
+1. **Does it validate a core hypothesis** (shared list, budget trust, multi-store)
+2. **Can we learn without it** (if yes, defer)
+3. **Is it technically simple** (if no, defer)
+4. **Will users tolerate manual workarounds** (if yes, defer)
 
 **If answer to questions 2, 3, or 4 suggests deferring, it's not in MVP.**
 
@@ -324,11 +332,11 @@ Before declaring MVP "done":
 
 After MVP launch, focus on learning:
 
-1. **Do people actually set budgets?** → If not, why not?
-2. **Do they respect budget constraints?** → Do they remove items when over?
-3. **What stores matter most?** → Grocery-heavy or multi-category?
-4. **Is receipt entry too manual?** → Does it stop people from using it?
-5. **What's missing most?** → Voice? Recipes? Delivery?
+1. **Do people actually set budgets** -> If not, why not
+2. **Do they respect budget constraints** -> Do they remove items when over
+3. **What stores matter most** -> Grocery-heavy or multi-category
+4. **Is receipt entry too manual** -> Does it stop people from using it
+5. **What's missing most** -> Voice Recipes Delivery
 
 These learnings inform Phase 2 priorities.
 

@@ -6,6 +6,7 @@ Capture  Decide  Shop  Close Loop  Scale Up
 # Pages and Components Plan (MVP with Phased Execution)
 
 This plan enumerates key pages, minimal components, and shared state/data needs.
+It is a zoom-level implementation guide for docs/PRODUCT_MAP.md.
 
 ---
 

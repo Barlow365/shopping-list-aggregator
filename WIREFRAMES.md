@@ -1,348 +1,79 @@
 ```text
-================================================================================
-THE ONE LIST SYSTEM - RETAIL COCKPIT WIREFRAMES
-Capture  Decide  Shop  Close Loop  Scale Up
-================================================================================
++==============================================================================+
+| THE ONE LIST SYSTEM | WIREFRAMES (HYBRID: RAILS + PANELS)                     |
+| Capture | Decide | Shop | Close Loop | Scale Up                               |
++==============================================================================+
 
-Notes:
-- ASCII-only wireframes (retail cockpit style)
-- Budget and decision spine stays visible across list views
-- List is the home surface; features are lenses on the same list
++------------------------------------------------------------------------------+
+| SCREEN: ITEMS (PRODUCT_MAP > CAPTURE > Items)                                |
++------------------------------------------------------------------------------+
+| HEADER: Back | Weekly Groceries | Items                                      |
++------------------------------------------------------------------------------+
+| QUICK ADD: [ milk, eggs, bread __________________________ ] [Add]            |
++-----------------------------------------+------------------------------------+
+| ITEMS (LIST)                            | BUDGET SPINE                       |
+| [ ] Milk   qty 2  priority: Should      | Budget: $150                        |
+| [ ] Eggs   qty 1  priority: Must        | Est:    $128                        |
+| [ ] Bread  qty 1  priority: Should      | Delta:  +$22                        |
+| [ ] Soap   qty 1  priority: Nice        | Must:   5                           |
+|                                         |                                    |
+| BULK ACTIONS                            |                                    |
+| Assign store | Set priority | Add tag   |                                    |
++-----------------------------------------+------------------------------------+
 
-================================================================================
-PUBLIC / MARKETING
-================================================================================
-
-/
 +------------------------------------------------------------------------------+
-| LOGO  ONE LIST SYSTEM                                   [Log In] [Sign Up]    |
+| SCREEN: BUDGET (PRODUCT_MAP > DECIDE > Budget)                                |
 +------------------------------------------------------------------------------+
-| HERO: One list. Many stores. Budget-aware decisions.                         |
-| SUB: Plan together. Spend together. No catalog, no noise.                    |
-| [Create List]  [Join by Invite]                                              |
+| HEADER: Back | Weekly Groceries | Budget                                     |
 +------------------------------------------------------------------------------+
-| HOW IT WORKS:  Capture -> Decide -> Shop                                     |
-+------------------------------------------------------------------------------+
-| FEATURE CARDS: Shared | Budget | Multi-store | Recipes | Voice | Receipts     |
-|                Delivery | Recurring | Pooling                                   |
-+------------------------------------------------------------------------------+
-| FOOTER: Privacy | Terms | Pricing                                             |
-+------------------------------------------------------------------------------+
-
-/how-it-works
-+------------------------------------------------------------------------------+
-| STEP 1 CAPTURE  | STEP 2 DECIDE | STEP 3 SHOP                                 |
-| Quick add       | Budget spine  | Shop mode                                   |
-+------------------------------------------------------------------------------+
-
-/features
-+------------------------------------------------------------------------------+
-| FEATURE GRID: Shared | Budget | Multi-store | Recipes | Voice | Receipts      |
-|                Delivery | Recurring | Pooling | Approvals | Caps              |
+| SUMMARY                                 | PRICE MEMORY                       |
+| Budget: $150                            | Milk $3.50                          |
+| Estimated: $128                         | Eggs $2.90                          |
+| Delta: +$22                             | Bread $2.10                         |
++-----------------------------------------+------------------------------------+
+| ACTIONS                                                                      |
+| [Remove Nice-to-have] [Show Must Only] [Edit Budget]                         |
 +------------------------------------------------------------------------------+
 
-/pricing
 +------------------------------------------------------------------------------+
-| MVP: Free now  |  Pro: Later (placeholder)                                    |
+| SCREEN: SHOP MODE (PRODUCT_MAP > SHOP > Shop Mode)                            |
 +------------------------------------------------------------------------------+
-
-/privacy   /terms
+| HEADER: Back | Weekly Groceries | Shop Mode                                  |
 +------------------------------------------------------------------------------+
-| LEGAL TEXT BLOCK                                                            |
+| STORE FILTER: [All] [Kroger] [Target] [Home Depot]                           |
++-----------------------------------------+------------------------------------+
+| CHECKLIST                               | BUDGET SPINE                       |
+| [ ] Milk                                | Budget: $150                        |
+| [ ] Eggs                                | Est:    $128                        |
+| [ ] Bread                               | Delta:  +$22                        |
+| [ ] Soap                                |                                    |
++-----------------------------------------+------------------------------------+
+| PURCHASED                                                                   |
+| [x] Paper Towels                                                         v   |
 +------------------------------------------------------------------------------+
-
-================================================================================
-AUTH / ENTRY
-================================================================================
-
-/login
-+------------------------------------------------------------------------------+
-| LOGO                                                                          |
-| EMAIL [______________]  PASSWORD [______________]  [Log In]                   |
-| [Forgot Password]                                                            |
+| FOOTER: [Add Receipt] [Exit Shop Mode]                                      |
 +------------------------------------------------------------------------------+
 
-/signup
 +------------------------------------------------------------------------------+
-| EMAIL [______________]  PASSWORD [______________]  [Sign Up]                  |
+| SCREEN: RECEIPTS (PRODUCT_MAP > CLOSE LOOP > Receipts)                        |
 +------------------------------------------------------------------------------+
+| HEADER: Back | Weekly Groceries | Receipts                                   |
++------------------------------------------------------------------------------+
+| UPLOAD: [Choose File] [Upload]                                               |
++-----------------------------------------+------------------------------------+
+| MANUAL MATCH                            | SUMMARY                            |
+| Milk   [x]  Actual: $3.89               | Budgeted: $150                      |
+| Eggs   [x]  Actual: $2.99               | Actual:   $163                      |
+| Bread  [ ]  Actual: $2.19               | Delta:   -$13                       |
++-----------------------------------------+------------------------------------+
 
-/onboarding
 +------------------------------------------------------------------------------+
-| CREATE GROUP [__________]  CREATE LIST [__________]                          |
-| BUDGET (optional) [$____]                                                    |
-| INVITE LINK [Copy]                                                           |
-| [Finish]                                                                     |
+| SCREEN: CONTROLS (PRODUCT_MAP > SCALE UP > Controls)                          |
 +------------------------------------------------------------------------------+
-
-================================================================================
-APP HOME / HUB
-================================================================================
-
-/app/home
+| HEADER: Back | Weekly Groceries | Controls                                   |
 +------------------------------------------------------------------------------+
-| LOGO  ONE LIST SYSTEM                             Search...        [Profile] |
+| CAPS AND APPROVALS                                                           |
+| Cap per person: $50 (stub)                                                   |
+| Expensive item gate: $30+ (stub)                                             |
 +------------------------------------------------------------------------------+
-| NAV: Home | List | Budget | Shop | Receipts | History | Settings              |
-+------------------------------------------------------------------------------+
-| ACTIVE LIST SNAPSHOT                                                         |
-| Weekly Groceries | Budget $150 | Est $128 | Stores 3 | Must 5                 |
-+------------------------------------------------------------------------------+
-| QUICK ACTIONS   [Add Items] [Shop Mode] [Budget] [Invite]                     |
-+------------------------------------------------------------------------------+
-| RECENT ACTIVITY                                                              |
-| - Sam added milk 2m ago                                                      |
-| - Alex set budget to $150 10m ago                                            |
-+------------------------------------------------------------------------------+
-| ARCHIVE (read-only): Last Week Groceries | Home Depot Run                     |
-+------------------------------------------------------------------------------+
-
-================================================================================
-GROUPS / HOUSEHOLDS
-================================================================================
-
-/app/groups
-+------------------------------------------------------------------------------+
-| GROUPS                                                                        |
-| - House | - Roommates | - Cabin                                               |
-| [Create Group]                                                                |
-+------------------------------------------------------------------------------+
-
-/app/groups/:groupId
-+------------------------------------------------------------------------------+
-| GROUP: House                                                                  |
-| MEMBERS: Sam | Alex | Priya                                                   |
-| PERMISSIONS (stub)                                                            |
-| ACTIVE LIST: Weekly Groceries (1 active)                                      |
-| ARCHIVED: Last Week Groceries | Home Depot Run                                |
-+------------------------------------------------------------------------------+
-
-================================================================================
-LIST WORKSPACE (RETAIL COCKPIT LAYOUT)
-================================================================================
-
-Layout legend:
-- Left column: list + items
-- Right column: budget/decision spine (always visible)
-- Top tabs: feature lenses on the list
-
---------------------------------------------------------------------------------
-/app/lists/:listId/items
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| QUICK ADD [milk, eggs, bread ___________________________] [Add]              |
-+--------------------------------------+---------------------------------------+
-| ITEMS                                | BUDGET SPINE                          |
-| [ ] Milk     qty 2  $4  unassigned   | Budget: $150                           |
-| [ ] Eggs     qty 1  $3  Kroger       | Est:    $128                           |
-| [ ] Bread    qty 1  $2  unassigned   | Delta:  +$22                           |
-| [ ] Soap     qty 1  $5  Target       | Must:   5                              |
-|                                      | [View Budget]                          |
-+--------------------------------------+---------------------------------------+
-| BULK ACTIONS: Assign Store | Priority | Tag | Mark Purchased                  |
-+------------------------------------------------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/stores
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| STORE LENS: [All] [Kroger] [Target] [Home Depot] [+ Custom]                  |
-+--------------------------------------+---------------------------------------+
-| STORE VIEW                          | BUDGET SPINE                           |
-| Kroger: Eggs, Milk                  | Budget: $150                           |
-| Target: Soap                        | Est:    $128                           |
-| Unassigned: Bread                   | Delta:  +$22                           |
-| [Assign Unassigned -> Kroger]       |                                          |
-+--------------------------------------+---------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/budget
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| BUDGET PANEL                                                               > |
-| Budget: [$150]   Est: $128   Delta: +$22                                      |
-| [Remove Nice-to-have] [Show Must Only] [Edit Budget]                          |
-+--------------------------------------+---------------------------------------+
-| PRICE MEMORY                        | BUDGET SPINE                           |
-| Milk $3.50 | Eggs $2.90 | Bread $2.10 | Budget: $150                          |
-| Soap $4.75                         | Est:    $128                            |
-+--------------------------------------+---------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/shop
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries | SHOP MODE                          Offline   [Exit]  |
-+------------------------------------------------------------------------------+
-| STORE: [All] [Kroger] [Target] [Home Depot]                                  |
-+--------------------------------------+---------------------------------------+
-| CHECKLIST                          | BUDGET SPINE                            |
-| [ ] Milk                            | Budget: $150                           |
-| [ ] Eggs                            | Est:    $128                           |
-| [ ] Bread                           | Delta:  +$22                           |
-| [ ] Soap                            |                                          |
-+--------------------------------------+---------------------------------------+
-| PURCHASED (auto moves)                                                     > |
-| [x] Paper Towels                                                           v |
-+------------------------------------------------------------------------------+
-| FOOTER: [Receipt Entry] [Back to List]                                       |
-+------------------------------------------------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/receipts
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| UPLOAD RECEIPT [Choose File] [Upload]                                        |
-+--------------------------------------+---------------------------------------+
-| MANUAL MATCH + PRICES               | BUDGET SPINE                           |
-| Milk   [x]  $3.89                   | Budget: $150                           |
-| Eggs   [x]  $2.99                   | Actual: $163                           |
-| Bread  [ ]  $2.19                   | Delta:  -$13                           |
-| Soap   [x]  $4.99                   |                                          |
-+--------------------------------------+---------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/history
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| ACTIVITY TIMELINE                                                           > |
-| - Sam added Milk                                                            |
-| - Alex set budget to $150                                                   |
-| - Priya marked Soap purchased                                               |
-+--------------------------------------+---------------------------------------+
-| PRICE MEMORY TABLE                 | BUDGET SPINE                            |
-| Milk $3.50 | Eggs $2.90 | Bread $2.10 | Budget: $150                          |
-+--------------------------------------+---------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/voice  (stub)
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| VOICE CAPTURE (COMING SOON)                                                  |
-| [Paste text instead _________________________________________] [Add]          |
-+------------------------------------------------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/recipes  (manual)
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| RECIPES                                                                      |
-| [Add Recipe]                                                                 |
-| - Pasta Primavera  (Add ingredients -> List)                                 |
-| - Chili            (Add ingredients -> List)                                 |
-| Cost/serving: stub                                                           |
-+------------------------------------------------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/recurring  (stub)
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| RECURRING RULES (stub)                                                       |
-| [Add Rule]                                                                   |
-| - Milk every 7 days                                                          |
-| Forecast: stub                                                               |
-+------------------------------------------------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/delivery  (stub)
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| DELIVERY                                                                      |
-| [Export List]                                                                 |
-| Integrations: stub                                                           |
-+------------------------------------------------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/pooling  (stub)
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| POOLING / SPLITS                                                              |
-| Pool balance: stub                                                           |
-| Assign buyers: stub                                                          |
-+------------------------------------------------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/controls  (stub)
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| APPROVALS / CAPS                                                              |
-| - Cap: $50 per person (stub)                                                  |
-| - Approvals: expensive item gate (stub)                                       |
-+------------------------------------------------------------------------------+
-
---------------------------------------------------------------------------------
-/app/lists/:listId/upgrades
---------------------------------------------------------------------------------
-+------------------------------------------------------------------------------+
-| LIST: Weekly Groceries                                Sync: Online  [Profile] |
-| TABS: Items | Store View | Budget | Shop | Receipts | History | Voice | More  |
-| MORE: Recipes | Recurring | Delivery | Pooling | Controls | Upgrades       |
-+------------------------------------------------------------------------------+
-| UPGRADES                                                                      |
-| [Enable Voice] [Enable Recipes] [Enable Delivery] (feature flags)             |
-+------------------------------------------------------------------------------+
-
-================================================================================
-SETTINGS / HELP / SYSTEM
-================================================================================
-
-/app/settings
-+------------------------------------------------------------------------------+
-| PROFILE | SESSIONS | MEMBERS                                                 |
-+------------------------------------------------------------------------------+
-
-/app/help
-+------------------------------------------------------------------------------+
-| FEEDBACK FORM | SUPPORT LINKS                                                 |
-+------------------------------------------------------------------------------+
-
-/system
-+------------------------------------------------------------------------------+
-| EMPTY STATES | OFFLINE BANNER | SYNC CONFLICTS | ERROR STATES                 |
-+------------------------------------------------------------------------------+
-
 ```
