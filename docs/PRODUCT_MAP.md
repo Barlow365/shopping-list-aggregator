@@ -9,6 +9,23 @@
 | STATUS STRIP                                                                 |
 | Budget: $150  Est: $128  Delta: +$22  Stores: 3  Must: 5                     |
 +==============================================================================+
+| DESIGN TOKENS (FOR FIGMA)                                                |
+| Palette                                                                      |
+|  Ink:      #111111   Paper:  #F5F2EC   Line:   #D6D2C4                        |
+|  Accent:   #F2B705   Teal:   #0E7C7B   Danger: #C0392B                        |
+|  Success:  #2E7D32   Info:   #1F6FEB   Muted:  #6B7280                        |
+| Type                                                                         |
+|  Display:  Suisse Intl (or similar)                                          |
+|  Mono:     IBM Plex Mono                                                     |
+| Buttons                                                                      |
+|  Primary: Accent fill, Ink text                                              |
+|  Secondary: Line border, Ink text                                            |
+|  Ghost: text only, Teal on hover                                             |
+|  Danger: Danger fill, Paper text                                             |
+| States                                                                       |
+|  Active tab: Teal underline                                                  |
+|  Disabled: Muted text, Line border                                            |
++==============================================================================+
 | ENTRY                                      | CORE OBJECT (LIST)              |
 | Public                                     | List: Weekly Groceries          |
 |  /            Home                         | Members: Sam, Alex, Priya        |
