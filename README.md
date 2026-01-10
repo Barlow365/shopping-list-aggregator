@@ -6,7 +6,6 @@
 | [docs/MASTER_PLAN.md](docs/MASTER_PLAN.md) | End-to-end behavior (phased journey) | Truth |
 | [docs/ux/WIREFRAMES.md](docs/ux/WIREFRAMES.md) | ESW + XO route blocks | Derived |
 | [docs/ux/SITEMAP.md](docs/ux/SITEMAP.md) | Route map aligned to PRODUCT_MAP | Derived |
-| [docs/planning/MVP_SPEC.md](docs/planning/MVP_SPEC.md) | MVP criteria tied to ESW | Derived |
 
 | System Model | Description | Persisted? | User-facing label |
 | --- | --- | --- | --- |
