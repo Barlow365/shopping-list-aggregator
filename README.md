@@ -27,6 +27,11 @@
 | /app/trips/:tripId | TRIP | Shop mode, confirm items | docs/ux/WIREFRAMES.md (ESW: Trip) | docs/ux/WIREFRAMES.md (XO: none) |
 | /app/trips/:tripId/receipts | TRIP | Match receipt, update prices | docs/ux/WIREFRAMES.md (ESW: Receipts) | docs/ux/WIREFRAMES.md (XO: none) |
 
+| Visual Index | Purpose | Link |
+| --- | --- | --- |
+| ESW + XO Wireframes | Primary UX reference | docs/ux/WIREFRAMES.md |
+| Route Map | Navigation + modes | docs/ux/SITEMAP.md |
+
 # EXECUTABLE STRUCTURAL WIREFRAMES (ESW)
 Wireframe standard:
 - Explicit, column-based ASCII schematics with vertical rails.

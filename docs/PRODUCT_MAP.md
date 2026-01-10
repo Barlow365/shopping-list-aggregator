@@ -4,7 +4,7 @@
 The system is ITEM-FIRST.
 
 1) Users add ITEMS first.
-2) ITEMS live in a global ITEM POOL.
+2) ITEMS live in a global memory (Things you need).
 3) ITEMS are tagged (store, urgency, budget, person, category).
 4) LISTS are GENERATED VIEWS of items based on context.
 5) LISTS only become concrete when the user is preparing to SHOP.
@@ -28,7 +28,7 @@ If an experience element is not bound to ESW, it is invalid and must be removed 
 
 | Node | Inputs | Outputs | Purpose |
 | --- | --- | --- | --- |
-| Item Capture | Free text, store mention | Item + tags | Intent becomes item in pool |
+| Item Capture | Free text, store mention | Item + tags | Intent becomes item in memory |
 | Item Tagging | Priority, person, category | Tagged item | Context for views/trips |
 | Generated View | Tags, budget, store context | Contextual list | Assemble by situation |
 | Trip Creation | View + store/time | Trip | Time-bound execution |
@@ -40,7 +40,7 @@ If an experience element is not bound to ESW, it is invalid and must be removed 
 - This prevents cart lock-in and supports cross-pollination across stores.
 
 ## Why This Prevents Cart Lock-In
-- Items live in the ITEM POOL first.
+- Items live in memory first.
 - When a user goes to Target, the system surfaces eligible items from all prior intent.
 - No item is trapped inside a store list.
 
@@ -48,3 +48,7 @@ If an experience element is not bound to ESW, it is invalid and must be removed 
 - Route placeholder: /app/groups/:groupId (not implemented)
 - Binds to ESW route once group routes exist.
 - Overlay elements: avatars, approvals, discussion pins.
+
+
+## Internal Term (Architecture Only)
+- Item Pool is the internal storage concept for Things you need.

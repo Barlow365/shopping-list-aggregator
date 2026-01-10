@@ -4,7 +4,7 @@
 The system is ITEM-FIRST.
 
 1) Users add ITEMS first.
-2) ITEMS live in a global ITEM POOL.
+2) ITEMS live in a global memory (Things you need).
 3) ITEMS are tagged (store, urgency, budget, person, category).
 4) LISTS are GENERATED VIEWS of items based on context.
 5) LISTS only become concrete when the user is preparing to SHOP.
