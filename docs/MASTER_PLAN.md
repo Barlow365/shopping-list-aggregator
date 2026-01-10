@@ -54,61 +54,15 @@ If an experience element is not bound to ESW, it is invalid and must be removed 
 | Shop mode | Trip | Trip state | Offline checklist |
 | Receipt | Trip | Price memory | Close loop |
 
-## Route ESW + XO Blocks
+## Route ESW + XO Summary
+| Route | ESW states | Forward actions | XO overlays |
+| --- | --- | --- | --- |
+| /app/intake | EMPTY -> TYPING -> TAGGING | Start AID -> Add Item | Stepwise Intake + Live Preview |
+| /app/memory | DEFAULT | Start View / Start Trip | Workspace Shell |
+| /app/view | DEFAULT, OVER_BUDGET | Start Trip / Trim / Reprioritize | Workspace Shell, Over-Budget Balance |
+| /app/trips/start | SELECT_STORE | Generate Trip | Store Planning Zone Map |
+| /app/trips/:tripId | SHOPPING | Confirm/Skip | none |
+| /app/trips/:tripId/receipts | MATCHING | Update price memory | none |
 
-### /app/intake
-ESW:
-- Mode: ITEM POOL
-- States: EMPTY -> TYPING -> TAGGING
-- Forward action: Start AID -> Add Item -> Memory
-XO:
-- XO: Stepwise Intake + Live Preview
-- Binds to: /app/intake + state TYPING + action Start AID
-- Shell: stepper dots, preview scaffold forming
-
-### /app/memory
-ESW:
-- Mode: ITEM POOL
-- States: DEFAULT
-- Forward action: Start View / Start Trip
-XO:
-- XO: Workspace Shell (Consolidated Panels)
-- Binds to: /app/memory + state DEFAULT + action Start View/Trip
-- Shell: consolidated panels, ambient workspace frame
-
-### /app/view
-ESW:
-- Mode: VIEW
-- States: DEFAULT, OVER_BUDGET
-- Forward action: Start Trip / Trim / Reprioritize
-XO:
-- XO: Workspace Shell (Consolidated Panels)
-- Binds to: /app/view + state DEFAULT + action Start Trip
-- XO: Over-Budget Balance
-- Binds to: /app/view + state OVER_BUDGET + action Trim/Reprioritize
-
-### /app/trips/start
-ESW:
-- Mode: TRIP
-- States: SELECT_STORE
-- Forward action: Generate Trip
-XO:
-- XO: Store Planning Zone Map
-- Binds to: /app/trips/start + state SELECT_STORE + action Generate Trip
-- Shell: drag items from unassigned cloud into store zones
-
-### /app/trips/:tripId
-ESW:
-- Mode: TRIP
-- States: SHOPPING
-- Forward action: Confirm/Skip
-XO:
-- XO: none (default ESW)
-
-### /app/trips/:tripId/receipts
-ESW:
-- Mode: TRIP
-- States: MATCHING
-- Forward action: Update price memory
-XO:
-- XO: none (default ESW)
+## Wireframes (ESW + XO)
+See `docs/ux/WIREFRAMES.md` for full ESW and XO blocks in the project wireframe style.
