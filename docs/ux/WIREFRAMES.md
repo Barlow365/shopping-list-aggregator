@@ -45,7 +45,7 @@ ESW: INTAKE | MODE: ITEM POOL
 | PREVIEW:                                                                     |
 | Items: (empty)                                                               |
 |                                                                              |
-| ACTION: [Start AID] -> /app/intake (AID)                                     |
+| ACTION: [Start AID] -> AID (modal)                                     |
 +------------------------------------------------------------------------------+
 
 XO: Stepwise Intake + Live Preview
@@ -84,7 +84,7 @@ XO: Onboarding Workspace Builder (Conversational)
 --------------------------------------------------------------------------------
 ESW: AID | MODE: ITEM POOL
 --------------------------------------------------------------------------------
-/app/intake (AID)
+STATE: AID (modal, under /app/intake)
 +------------------------------------------------------------------------------+
 | HEADER: AID | Assisted Item Definition                                       |
 +------------------------------------------------------------------------------+
@@ -109,7 +109,7 @@ ESW: MEMORY | MODE: ITEM POOL
 --------------------------------------------------------------------------------
 /app/memory
 +------------------------------------------------------------------------------+
-| HEADER: Item Pool | Things you need                                          |
+| HEADER: Things you need | Memory                                          |
 +------------------------------------------------------------------------------+
 | ITEM LOCATION: ITEM POOL                                                     |
 |                                                                              |
@@ -133,7 +133,7 @@ XO: Main View - Core Experience (Split-screen Intent Builder)
 +------------------------------------------------------------------------------+
 | XO OVERLAY: Main View - Core Experience                                      |
 +------------------------------------------------------------------------------+
-| ONE LIST    Office Renovation                        [$2,400 budget]   [AV]  |
+| THINGS YOU NEED    Office Renovation                        [$2,400 budget]   [AV]  |
 | Binds to: /app/memory | State: DEFAULT | Action: Add Item                    |
 | Shell: split-screen intent builder with visual refinement                    |
 +------------------------------------------------------------------------------+
@@ -150,7 +150,7 @@ XO: Main View - Core Experience (Split-screen Intent Builder)
 | Price:  [$___] - [$800__]             |                                       |
 | From:   [Amazon ]                     |                                       |
 |                                      |                                       |
-| [+ Add to list]                       |                                       |
+| [+ Add to memory]                       |                                       |
 +------------------------------------------------------------------------------+
 | YOUR ITEMS                                                    $1,847 / $2,400 |
 |                                                                              |
@@ -196,7 +196,7 @@ XO: Over-Budget Balance
 +------------------------------------------------------------------------------+
 | XO OVERLAY: Over-Budget Balance                                              |
 +------------------------------------------------------------------------------+
-| ONE LIST    Office Renovation                                          [AV]  |
+| THINGS YOU NEED    Office Renovation                                          [AV]  |
 | Binds to: /app/view | State: OVER_BUDGET | Action: Trim/Reprioritize          |
 | Shell: physical balance scale metaphor                                       |
 +------------------------------------------------------------------------------+
@@ -251,7 +251,7 @@ XO: Store Planning Zone Map
 +------------------------------------------------------------------------------+
 | XO OVERLAY: Store Planning Zone Map                                          |
 +------------------------------------------------------------------------------+
-| ONE LIST    Office Renovation                     STORE PLANNING       [AV] |
+| THINGS YOU NEED    Office Renovation                     STORE PLANNING       [AV] |
 | Binds to: /app/trips/start | State: SELECT_STORE | Action: Generate Trip      |
 | Shell: drag items from unassigned cloud into store zones                      |
 +------------------------------------------------------------------------------+
@@ -358,7 +358,7 @@ XO: Receipts - The Matching Game
 +------------------------------------------------------------------------------+
 | XO OVERLAY: Receipts - The Matching Game                                     |
 +------------------------------------------------------------------------------+
-| ONE LIST    Office Renovation                        RECEIPTS          [AV] |
+| THINGS YOU NEED    Office Renovation                        RECEIPTS          [AV] |
 | Binds to: /app/trips/:tripId/receipts | State: MATCHING | Action: Done Matching |
 | PURPOSE: Close the loop, update prices, see planned vs actual                |
 | INNOVATIVE INTERACTION: Draw lines to match, visual comparison               |
@@ -397,8 +397,9 @@ XO: Collaboration - Shared Workspace (FUTURE)
 +------------------------------------------------------------------------------+
 | XO OVERLAY: Collaboration - Shared Workspace                                 |
 +------------------------------------------------------------------------------+
-| ONE LIST    Marketing Team                                             [AV]  |
+| THINGS YOU NEED    Marketing Team                                             [AV]  |
 | Route placeholder: /groups/:groupId (not implemented)                        |
+| Binds to: /groups/:groupId | State: ACTIVE | Action: Approve/Reject           |
 | PURPOSE: See team activity, make decisions together                          |
 | INNOVATIVE INTERACTION: Avatars around a shared canvas                       |
 +------------------------------------------------------------------------------+
@@ -434,7 +435,7 @@ XO: Empty State - The Invitation
 +------------------------------------------------------------------------------+
 | XO OVERLAY: Empty State - The Invitation                                     |
 +------------------------------------------------------------------------------+
-| ONE LIST    New Project                                                [AV] |
+| THINGS YOU NEED    New Project                                                [AV] |
 | Binds to: /app/memory | State: EMPTY | Action: Start AID                     |
 | PURPOSE: Get started without feeling lost                                    |
 | INNOVATIVE INTERACTION: The input IS the page                                |

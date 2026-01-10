@@ -41,7 +41,7 @@ If an experience element is not bound to ESW, it is invalid and must be removed 
 ## Phase 3: View Generation
 | Step | Reads | Writes | Notes |
 | --- | --- | --- | --- |
-| View query | Item Pool + tags | Generated view | Contextual list, not yet a trip |
+| View query | Item Pool (internal) + tags | Generated view | Contextual list, not yet a trip |
 
 ## Phase 4: Trip Creation
 | Step | Reads | Writes | Notes |
