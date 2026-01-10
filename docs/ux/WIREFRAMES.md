@@ -9,18 +9,26 @@ Wireframe standard:
 - Required symbols: [ ] pending, [x] confirmed, [>] active, [?] suggested.
 - Every wireframe answers: item location, mode, action that moves the item forward.
 
+# EXPERIENCE OVERLAYS (XO)
+XO is an overlay layer attached to ESW route/state/action.
+It describes the interaction shell without changing ESW logic.
+
+ESW defines what happens. XO defines how it feels.
+XO must always reference an ESW route + state + forward action.
+If an experience element is not bound to ESW, it is invalid and must be removed or bound.
+
 ## Route Catalog
-| Route | Mode | Purpose | Key actions | State transitions |
-| --- | --- | --- | --- | --- |
-| /app/intake | ITEM POOL | Capture intent + tags | Type intent, AID refine | Intake -> AID -> Pool |
-| /app/memory | ITEM POOL | Browse item pool | Edit tags, start view/trip | Pool -> View/Trip |
-| /app/view | VIEW | Contextual list | Filter by budget/store | View -> Trip |
-| /app/trips/start | TRIP | Assemble trip | Select store, generate | Trip start -> Trip |
-| /app/trips/:tripId | TRIP | Shop mode | Check off, offline | Trip -> Receipts |
-| /app/trips/:tripId/receipts | TRIP | Receipt loop | Match items, update prices | Receipts -> Pool |
+| Route | Mode | Purpose | Core actions | ESW section | XO section |
+| --- | --- | --- | --- | --- | --- |
+| /app/intake | ITEM POOL | Capture intent + tags | Start AID -> Add Item | ESW: Intake | XO: Stepwise Intake |
+| /app/memory | ITEM POOL | Persistent item memory | Edit tags, start view/trip | ESW: Memory | XO: Workspace Shell |
+| /app/view | VIEW | Generated views | Filter, budget, start trip | ESW: View | XO: Workspace + Over-Budget |
+| /app/trips/start | TRIP | Trip assembly | Select store, generate | ESW: Trip Start | XO: Store Zone Map |
+| /app/trips/:tripId | TRIP | Shop mode | Confirm/Skip | ESW: Trip | XO: none |
+| /app/trips/:tripId/receipts | TRIP | Receipt loop | Match, update prices | ESW: Receipts | XO: none |
 
 --------------------------------------------------------------------------------
-ONBOARDING (INTAKE) | MODE: ITEM POOL
+ESW: INTAKE | MODE: ITEM POOL
 --------------------------------------------------------------------------------
 /app/intake +-----------------------------------------------+ | HEADER: Intake | What do you need? |
 ||| ITEM LOCATION: ITEM POOL             ||| ACTION: Start AID            |||
@@ -30,8 +38,12 @@ ONBOARDING (INTAKE) | MODE: ITEM POOL
 ||| [Store?] [Urgent?] [For who?]       |||                              |||
 +---------------------------------------+
 
+XO: Stepwise Intake + Live Preview
+- Binds to: /app/intake + state TYPING + action Start AID
+- Shell: stepper dots + preview scaffold forming as answers arrive
+
 --------------------------------------------------------------------------------
-ASSISTED ITEM DEFINITION (AID) | MODE: ITEM POOL
+ESW: AID | MODE: ITEM POOL
 --------------------------------------------------------------------------------
 /app/intake (AID)
 +--------------------------------------------------------------------------------------+
@@ -48,8 +60,10 @@ ASSISTED ITEM DEFINITION (AID) | MODE: ITEM POOL
 | ACTION: [Add Item] -> What do you want to add next?                                    |
 +--------------------------------------------------------------------------------------+
 
+XO: none (default ESW)
+
 --------------------------------------------------------------------------------
-ITEM POOL (MEMORY HOME) | MODE: ITEM POOL
+ESW: MEMORY | MODE: ITEM POOL
 --------------------------------------------------------------------------------
 /app/memory +------------------------------------------+ | HEADER: Item Pool |
 ||| ITEM LOCATION: ITEM POOL          ||| ACTION: Start View/Trip |||
@@ -59,8 +73,12 @@ ITEM POOL (MEMORY HOME) | MODE: ITEM POOL
 ||| [ ] Diapers    [Must] [Kids]      ||| Diapers $28            |||
 +--------------------------------------+
 
+XO: Workspace Shell (Consolidated Panels)
+- Binds to: /app/memory + state DEFAULT + action Start View/Trip
+- Shell: unified workspace frame, consolidated panels
+
 --------------------------------------------------------------------------------
-GENERATED VIEW (CONTEXT) | MODE: VIEW
+ESW: VIEW | MODE: VIEW
 --------------------------------------------------------------------------------
 /app/view +----------------------------------------+ | HEADER: View | Budget Impact |
 ||| ITEM LOCATION: VIEW             ||| ACTION: Start Trip |||
@@ -70,8 +88,16 @@ GENERATED VIEW (CONTEXT) | MODE: VIEW
 |||                                 ||| LOW: Lamp          |||
 +----------------------------------+
 
+XO: Workspace Shell (Consolidated Panels)
+- Binds to: /app/view + state DEFAULT + action Start Trip
+- Shell: consolidated panels + ambient workspace frame
+
+XO: Over-Budget Balance
+- Binds to: /app/view + state OVER_BUDGET + action Trim/Reprioritize
+- Shell: ambient glow or balance scale visualization
+
 --------------------------------------------------------------------------------
-TRIP START (ASSEMBLY) | MODE: TRIP
+ESW: TRIP START | MODE: TRIP
 --------------------------------------------------------------------------------
 /app/trips/start +-------------------------------------+ | HEADER: Trip Start |
 ||| ITEM LOCATION: TRIP (GENERATED)                   |||
@@ -80,8 +106,12 @@ TRIP START (ASSEMBLY) | MODE: TRIP
 ||| ACTION: [Generate Trip]                           |||
 +-------------------------------------+
 
+XO: Store Planning Zone Map
+- Binds to: /app/trips/start + state SELECT_STORE + action Generate Trip
+- Shell: drag items from unassigned cloud into store zones
+
 --------------------------------------------------------------------------------
-TRIP (SHOP MODE) | MODE: TRIP
+ESW: TRIP | MODE: TRIP
 --------------------------------------------------------------------------------
 /app/trips/:tripId +----------------------------------+ | HEADER: Trip | Offline |
 ||| ITEM LOCATION: TRIP               ||| ACTION: Confirm/Skip |||
@@ -89,8 +119,10 @@ TRIP (SHOP MODE) | MODE: TRIP
 ||| Ergonomic Chair $450              ||| SWIPE: Left skip | Right got it       |||
 +-------------------------------------+
 
+XO: none (default ESW)
+
 --------------------------------------------------------------------------------
-RECEIPTS (CLOSE LOOP) | MODE: TRIP
+ESW: RECEIPTS | MODE: TRIP
 --------------------------------------------------------------------------------
 /app/trips/:tripId/receipts +-------------------------+ | HEADER: Receipts |
 ||| ITEM LOCATION: TRIP -> ITEM POOL                 ||| ACTION: Update price memory |||
@@ -100,3 +132,5 @@ RECEIPTS (CLOSE LOOP) | MODE: TRIP
 ||| COMPARISON: Planned vs Actual ||| Updates price mem|||
 ||| Action: [Done Matching]       |||                  |||
 +---------------------------------+
+
+XO: none (default ESW)

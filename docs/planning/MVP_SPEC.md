@@ -5,3 +5,8 @@
 | Authority | Derived from PRODUCT_MAP + MASTER_PLAN |
 | Goal | Validate item-first capture and trip generation |
 | Success | Users create items, generate trips, and enter receipts |
+
+| ESW/XO Alignment | Rule |
+| --- | --- |
+| ESW | Defines routes, modes, states, actions |
+| XO | Overlays only when bound to ESW route/state/action |
