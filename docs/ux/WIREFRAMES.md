@@ -1,4 +1,4 @@
-# MASTER PLAN
+# WIREFRAMES
 
 # CANONICAL PRODUCT MODEL (NO-DRIFT)
 This repository describes ONE system:
@@ -65,23 +65,6 @@ Required conventions:
 If any wireframe is not traceable to this system, rewrite or delete it.
 
 
-## System Overview
-
-- Core object: Item Pool
-- Views: generated queries
-- Trips: generated store/time views
-- Receipts: attach to trips and update price memory
-
-## Key Routes
-
-- /app/intake
-- /app/pool
-- /app/views
-- /app/trips/start
-- /app/trips/:tripId
-- /app/trips/:tripId/receipts
-
-## Wireframes (Detailed)
 
 ================================================================================
 WIREFRAME LEGEND

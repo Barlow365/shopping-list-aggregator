@@ -1,6 +1,6 @@
 ## Terminology Note
 
-This research uses legacy list terminology. In this repo, list refers to generated views over the Item Pool.
+This research uses legacy list terminology. In this repo, list refers to the Item Pool and generated views.
 
 ---
 

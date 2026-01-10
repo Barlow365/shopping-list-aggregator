@@ -1,4 +1,4 @@
-# PRODUCT MAP
+# Pages and Components Plan
 
 # CANONICAL PRODUCT MODEL (NO-DRIFT)
 This repository describes ONE system:
@@ -65,42 +65,27 @@ Required conventions:
 If any wireframe is not traceable to this system, rewrite or delete it.
 
 
-================================================================================
-THE ONE LIST SYSTEM | PRODUCT MAP (ITEM POOL CORE)
-Capture | Decide | Shop | Close Loop | Scale Up
-================================================================================
+## Pages
 
-| CORE OBJECT: ITEM POOL
-|  Items persist across time.
-|  Items are tagged with store eligibility, priority, budget relevance, and who/what its for.
-|  Items are never trapped in store carts or store-specific lists.
-|
-| INTAKE MODE (DEFAULT CAPTURE)
-|  First-run and empty states start with: What do you want to buy?
-|  System parses items + store mentions.
-|  System asks one follow-up at a time (need now vs later, budget, for who).
-|  Ends with: Start Trip | View Pool | Invite
-|  Assisted Item Definition (AID) is shown before final Add
-|  AID uses 3-panel clarifier: tips | primary match | interpretation
-|
-| QUERY-DRIVEN VIEWS (GENERATED)
-|  Show me everything I added (default)
-|  Show me by budget impact
-|  Show me Must items only
-|  Show me items for Kids / Dinner / Remodel
-|  Show me what to buy at Kroger
-|
-| TRIP GENERATION (STORE/TIME BOUND)
-|  Trip Start: Im going to Kroger
-|  System generates a store-specific trip list from eligible pool items.
-|  Cross-pollination is required (do not trap items to prior stores).
-|  Trip Start can invoke AID to refine ambiguous items before adding to trip
-|
-| TRIP MODE (SHOP)
-|  Store checklist, offline checkoff, purchased state
-|  Trip is persisted for receipts/history
-|
-| RECEIPTS + PRICE MEMORY (CLOSE LOOP)
-|  Receipt attached to Trip
-|  Manual entry updates item price memory
-|  Price memory feeds back into the pool
+- /app/intake: Intake Mode
+- /app/pool: Item Pool home
+- /app/views: View builder
+- /app/trips/start: Trip Start
+- /app/trips/:tripId: Trip Checklist
+- /app/trips/:tripId/receipts: Receipt Entry
+- /app/settings, /app/help
+
+## Components
+
+- IntakePrompt, IntakeParser, FollowUpQuestion, AssistedItemDefinition
+- PoolItemRow, PoolFilters, PoolSummary
+- ViewBuilder, ViewResultList
+- TripStorePicker, TripPreview, TripChecklist
+- ReceiptUpload, ReceiptLineItems, PriceMemoryPanel
+
+## Shared State
+
+- Pool state
+- View query state
+- Trip state
+- Price memory

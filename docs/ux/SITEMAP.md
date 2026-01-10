@@ -1,4 +1,4 @@
-# PRODUCT MAP
+# SITEMAP
 
 # CANONICAL PRODUCT MODEL (NO-DRIFT)
 This repository describes ONE system:
@@ -66,41 +66,36 @@ If any wireframe is not traceable to this system, rewrite or delete it.
 
 
 ================================================================================
-THE ONE LIST SYSTEM | PRODUCT MAP (ITEM POOL CORE)
-Capture | Decide | Shop | Close Loop | Scale Up
+THE ONE LIST SYSTEM | ROUTE MAP (POOL / VIEW / TRIP)
 ================================================================================
 
-| CORE OBJECT: ITEM POOL
-|  Items persist across time.
-|  Items are tagged with store eligibility, priority, budget relevance, and who/what its for.
-|  Items are never trapped in store carts or store-specific lists.
+| ENTRY
+|  /                 Home
+|  /how-it-works
+|  /features
+|  /pricing
+|  /privacy
+|  /terms
 |
-| INTAKE MODE (DEFAULT CAPTURE)
-|  First-run and empty states start with: What do you want to buy?
-|  System parses items + store mentions.
-|  System asks one follow-up at a time (need now vs later, budget, for who).
-|  Ends with: Start Trip | View Pool | Invite
-|  Assisted Item Definition (AID) is shown before final Add
-|  AID uses 3-panel clarifier: tips | primary match | interpretation
+| AUTH
+|  /login
+|  /signup
+|  /onboarding (intake mode first-run)
 |
-| QUERY-DRIVEN VIEWS (GENERATED)
-|  Show me everything I added (default)
-|  Show me by budget impact
-|  Show me Must items only
-|  Show me items for Kids / Dinner / Remodel
-|  Show me what to buy at Kroger
+| POOL
+|  /app/pool         Item Pool home
+|  /app/intake       Guided Add (default capture, includes AID)
 |
-| TRIP GENERATION (STORE/TIME BOUND)
-|  Trip Start: Im going to Kroger
-|  System generates a store-specific trip list from eligible pool items.
-|  Cross-pollination is required (do not trap items to prior stores).
-|  Trip Start can invoke AID to refine ambiguous items before adding to trip
+| VIEWS (GENERATED)
+|  /app/views        View builder + saved views (optional)
 |
-| TRIP MODE (SHOP)
-|  Store checklist, offline checkoff, purchased state
-|  Trip is persisted for receipts/history
+| TRIPS (GENERATED)
+|  /app/trips/start  Trip start (choose/infer store)
+|  /app/trips/:tripId  Trip checklist (shop mode)
+|  /app/trips/:tripId/receipts  Receipt entry
+|  Note: Trip Start can invoke AID to refine ambiguous items
 |
-| RECEIPTS + PRICE MEMORY (CLOSE LOOP)
-|  Receipt attached to Trip
-|  Manual entry updates item price memory
-|  Price memory feeds back into the pool
+| SYSTEM
+|  /app/settings
+|  /app/help
+|  /system

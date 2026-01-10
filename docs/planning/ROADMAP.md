@@ -1,7 +1,4 @@
-# ROADMAP (DERIVED)
+# Product Roadmap
 
-| Phase | Focus |
-| --- | --- |
-| Phase 0 | Documentation + ESW standard |
-| Phase 1 | Item capture + tagging |
-| Phase 2 | Views + trips + receipts |
+MVP proves Item Pool + Generated Trips + Budget decisions.
+Phases build automation around the same model.

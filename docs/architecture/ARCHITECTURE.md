@@ -1,4 +1,4 @@
-# PRODUCT MAP
+# ARCHITECTURE
 
 # CANONICAL PRODUCT MODEL (NO-DRIFT)
 This repository describes ONE system:
@@ -65,42 +65,29 @@ Required conventions:
 If any wireframe is not traceable to this system, rewrite or delete it.
 
 
-================================================================================
-THE ONE LIST SYSTEM | PRODUCT MAP (ITEM POOL CORE)
-Capture | Decide | Shop | Close Loop | Scale Up
-================================================================================
+## Data Model (Core)
 
-| CORE OBJECT: ITEM POOL
-|  Items persist across time.
-|  Items are tagged with store eligibility, priority, budget relevance, and who/what its for.
-|  Items are never trapped in store carts or store-specific lists.
-|
-| INTAKE MODE (DEFAULT CAPTURE)
-|  First-run and empty states start with: What do you want to buy?
-|  System parses items + store mentions.
-|  System asks one follow-up at a time (need now vs later, budget, for who).
-|  Ends with: Start Trip | View Pool | Invite
-|  Assisted Item Definition (AID) is shown before final Add
-|  AID uses 3-panel clarifier: tips | primary match | interpretation
-|
-| QUERY-DRIVEN VIEWS (GENERATED)
-|  Show me everything I added (default)
-|  Show me by budget impact
-|  Show me Must items only
-|  Show me items for Kids / Dinner / Remodel
-|  Show me what to buy at Kroger
-|
-| TRIP GENERATION (STORE/TIME BOUND)
-|  Trip Start: Im going to Kroger
-|  System generates a store-specific trip list from eligible pool items.
-|  Cross-pollination is required (do not trap items to prior stores).
-|  Trip Start can invoke AID to refine ambiguous items before adding to trip
-|
-| TRIP MODE (SHOP)
-|  Store checklist, offline checkoff, purchased state
-|  Trip is persisted for receipts/history
-|
-| RECEIPTS + PRICE MEMORY (CLOSE LOOP)
-|  Receipt attached to Trip
-|  Manual entry updates item price memory
-|  Price memory feeds back into the pool
+- ItemPool
+  - id, owner_id, created_at
+- Item
+  - id, pool_id, name, quantity, priority, budget_relevance, created_by
+- ItemTags
+  - item_id, tag_type (store, group, person), tag_value
+- Trip
+  - id, store, created_at, created_by, status
+  - Rule: Trip is derived from the pool but persisted for receipts/history
+- TripItems
+  - trip_id, item_id, included_at, purchased
+- Receipt
+  - id, trip_id, uploaded_by, total_amount, created_at
+- PriceMemory
+  - item_id, last_paid, last_store, updated_at
+
+## API Concepts (MVP)
+
+- POST /api/intake -> add items to pool
+- GET /api/pool -> list pool items
+- GET /api/views -> query-driven views
+- POST /api/trips/start -> generate trip
+- GET /api/trips/:tripId -> trip checklist
+- POST /api/trips/:tripId/receipts -> attach receipt + update price memory
