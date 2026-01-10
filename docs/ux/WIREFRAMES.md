@@ -65,153 +65,238 @@ Required conventions:
 If any wireframe is not traceable to this system, rewrite or delete it.
 
 
+
 ================================================================================
 WIREFRAME LEGEND
 ================================================================================
 | Symbols: [X] completed | [>] active | [.] planned | [?] stub
 
 --------------------------------------------------------------------------------
-INTAKE MODE (FIRST-RUN)  | MODE: ITEM POOL
+ONBOARDING / INTAKE MODE (FIRST RUN) | MODE: ITEM POOL
 --------------------------------------------------------------------------------
-| HEADER: Back | Intake Mode | Step 1 of 3
-| LAYOUT: 2-COLUMN
-| PROMPT: What do you want to buy?
-| INPUT: milk, eggs, diapers from Target
-| FOLLOW-UP (one at a time): Need now? [Yes] [Later]
-| FOLLOW-UP: For who? [House] [Kids] [Remodel]
-| CTA: [Start Trip] [View Pool] [Invite]
-| COLUMN A: Parsed Items
-|  - Milk (store: unassigned) [.] 
-|  - Eggs (store: unassigned) [.] 
-|  - Diapers (store: Target)  [.] 
-| COLUMN B: Tags
-|  - Priority: Should
-|  - Budget: Medium impact
+/app/intake
++--------------------------------------------------------------------------------------+
+| HEADER: Back | Intake Mode | Step 1 of 3 | Progress: Setup > Items > Invite           |
++--------------------------------------------------------------------------------------+
+| CONVERSATION BUILDER (LEFT)                 | LIVE PREVIEW (RIGHT)                    |
+| Q: Whats your first project?                | PREVIEW: Building your workspace        |
+| [Office renovation____________________]     | Workspace: Office renovation            |
+|                                             | Budget: [optional]                      |
+| Q: Set a budget? [Skip] [Set Budget]        | Items: (empty)                          |
+| Q: Who is this for? [Team] [Home] [Client]  | Members: You                            |
+|                                             |                                         |
+| INPUT: What do you need?                    |                                         |
+| [__________________________]                |                                         |
+| CTA: [Back] [Start adding]                  |                                         |
++--------------------------------------------------------------------------------------+
+HOW IT WORKS:
+- Ask one question at a time
+- Each answer animates into the preview
+- You see the workspace form before any setup forms
+- You can start adding items immediately
 
 --------------------------------------------------------------------------------
-ASSISTED ITEM DEFINITION (AID)  | MODE: ITEM POOL
+ASSISTED ITEM DEFINITION (AID) | MODE: ITEM POOL
 --------------------------------------------------------------------------------
+/app/intake (AID)
 +--------------------------------------------------------------------------------------+
 | HEADER: Assisted Item Definition                                                     |
 +--------------------------------------------------------------------------------------+
-| LEFT PANEL (DETAILS + COACHING)              | RIGHT PANEL (IMAGE + RECOMMENDATIONS) |
-+---------------------------------------------+----------------------------------------+
-| INTERPRETATION (LIVE UPDATING)              | PRIMARY IMAGE                          |
-| Item Name: [____________________]           | +------------------------------+       |
-| Category: [______________]                  | |      PRIMARY IMAGE           |       |
-| Attributes: [Size ____] [Brand ____]        | |        (placeholder)         |       |
-| Tags: [Store Eligible ________] [Group ___] | +------------------------------+       |
-| Price range: [$__ - $__] (soft)             | RECOMMENDATIONS (ALT PICKS)             |
-|                                             | +--------+  +--------+  +--------+     |
-| COACHING TIPS                               | |  IMG   |  |  IMG   |  |  IMG   |     |
-| - Brand helps                               | | $24.00 |  | $27.00 |  | $29.00 |     |
-| - Size matters                              | +--------+  +--------+  +--------+     |
-| - Say any brand if you dont care            | +--------+  +--------+  +--------+     |
-| Prompt: Add size? [S] [M] [L] [Any]         | |  IMG   |  |  IMG   |  |  IMG   |     |
-|                                             | | $22.00 |  | $25.00 |  | $31.00 |     |
-|                                             | +--------+  +--------+  +--------+     |
-+---------------------------------------------+----------------------------------------+
-| ACTIONS: [ Add Item ]  [ Edit Description ]  ->  What do you want to add next?       |
+| INTENT INPUT                         | VISUAL PREVIEW                               |
+| +----------------------------------+ | +------------------------------------------+ |
+| | What do you need?                | | | (image morphs as you type)               | |
+| | [a standing desk for the____]    | | | +------------------------------+         | |
+| | [office, preferably white__]     | | | |        PRIMARY IMAGE         |         | |
+| |                                  | | | |        (placeholder)         |         | |
+| | REFINERS (appear as you type):   | | | +------------------------------+         | |
+| | Style:  [Modern v]               | | | SIMILAR OPTIONS:                           | |
+| | Color:  o White  o Black  o Oak  | | | +-----+ +-----+ +-----+ +-----+           | |
+| | Price:  [$___] - [$800__]        | | | | IMG| | IMG| | IMG| | IMG|           | |
+| | From:   [Any store v]            | | | |$599| |$749| |$899| |$450|           | |
+| |                                  | | | +-----+ +-----+ +-----+ +-----+           | |
+| | LIVE INTERPRETATION              | | | (tap any to select)                        | |
+| | Item Name: [Standing Desk____]   | | +------------------------------------------+ |
+| | Category: [Furniture_______]     | |                                              |
+| | Attributes: [Size __] [Brand __] | |                                              |
+| | Tags: [Store eligible: Amazon]   | |                                              |
+| +----------------------------------+ |                                              |
++--------------------------------------------------------------------------------------+
+| ACTIONS: [ Add Item ] [ Edit Description ] -> What do you want to add next?         |
 +--------------------------------------------------------------------------------------+
 
 --------------------------------------------------------------------------------
-ITEM POOL HOME  | MODE: ITEM POOL
+MAIN VIEW - CORE EXPERIENCE | MODE: ITEM POOL
 --------------------------------------------------------------------------------
-| HEADER: Pool | Filters | Profile
-| LAYOUT: 2-COLUMN
-| COLUMN A: ALL ITEMS (most recent first)
-|  [.] Milk  tags: groceries  store-eligible: Kroger/Target
-|  [.] Eggs  tags: groceries  store-eligible: Kroger
-|  [.] Diapers tags: kids  store-eligible: Target
-| COLUMN B: PRICE MEMORY
-|  Milk $3.50 | Eggs $2.90 | Diapers $28.00
-| ACTIONS: [Start Trip] [Build View] [Add Items]
+/app/pool
++--------------------------------------------------------------------------------------+
+| ONE LIST  Office Renovation                                [$2,400 budget]   [AV]    |
+| AMBIENT BUDGET GLOW (edge of screen glows: blue=under, amber=near, red=over)         |
++--------------------------------------------------------------------------------------+
+| INTENT INPUT                                | VISUAL PREVIEW                         |
+| +----------------------------------------+ | +------------------------------------+ |
+| | What do you need?                      | | | (image morphs as you type)         | |
+| | [a standing desk for the____]          | | | +------------------------------+   | |
+| | [office, preferably white__]           | | | |        IMAGE PREVIEW         |   | |
+| |                                        | | | +------------------------------+   | |
+| | REFINERS (appear as you type):         | | | SIMILAR OPTIONS:                 | |
+| | Style:  [Modern v]                     | | | +-----+ +-----+ +-----+ +-----+ | |
+| | Color:  o White  o Black  o Oak        | | | |$599| |$749| |$899| |$450| | |
+| | Price:  [$___] - [$800__]              | | | +-----+ +-----+ +-----+ +-----+ | |
+| | From:   [Any store v]                  | | | (tap any to select)              | |
+| |                                        | | +------------------------------------+ |
+| | [+ Add to pool]                        | |                                      |
+| +----------------------------------------+ |                                      |
++--------------------------------------------------------------------------------------+
+| YOUR ITEMS                                                          $1,847 / $2,400  |
+| +---------+ +---------+ +---------+ +---------+                                     |
+| |  IMG   | |  IMG   | |  IMG   | |  IMG   |                                     |
+| | Desk   | | Chair  | | Monitor| | Lamp   |                                     |
+| | $749   | | $450   | | $350   | | $89    |                                     |
+| | MUST   | | SHOULD | | MUST   | | NICE   |                                     |
+| +---------+ +---------+ +---------+ +---------+                                     |
+| (drag cards to reorder priority - top = most important)                              |
++--------------------------------------------------------------------------------------+
 
 --------------------------------------------------------------------------------
-ADD ITEM (FROM POOL)  | MODE: ITEM POOL
+QUERY VIEW BUILDER | MODE: GENERATED VIEW
 --------------------------------------------------------------------------------
-| TRIGGER: [Add Items]
-| FLOW: Open AID -> Confirm -> Add to Pool -> Ask what to add next
-|
-| AID LAYOUT: 3-COLUMN (same as Intake)
-| LEFT: Details/Coaching | RIGHT: Image/Recommendations
-| ACTIONS: [ Add Item ] [ Edit Description ] -> After add: What do you want to add next?
+/app/views
++--------------------------------------------------------------------------------------+
+| HEADER: Views | Create | Saved: Budget Impact, Must Only, Kroger                    |
++--------------------------------------------------------------------------------------+
+| QUERY INPUT (LEFT)                       | LIVE RESULTS (RIGHT)                      |
+| +-------------------------------------+ | +---------------------------------------+ |
+| | Show me: [by budget impact______]   | | | HIGH IMPACT                           | |
+| | Filters: [Store v] [Priority v]     | | | - Standing Desk ($749)                | |
+| | Tags: [Kids] [Office] [Remodel]     | | | - Ergonomic Chair ($450)              | |
+| | [Save View] [Start Trip]            | | | MEDIUM IMPACT                         | |
+| +-------------------------------------+ | | - Monitor ($350)                      | |
+|                                         | | LOW IMPACT                             | |
+|                                         | | - Desk Lamp ($89)                     | |
+|                                         | +---------------------------------------+ |
++--------------------------------------------------------------------------------------+
 
 --------------------------------------------------------------------------------
-STORE MENTION TYPING  | MODE: ITEM POOL
+OVER BUDGET - BALANCE SCALE | MODE: GENERATED VIEW
 --------------------------------------------------------------------------------
-| INPUT: paper towels from Target
-| NOTE: Store is a tag/constraint, not a lock
-| AID LAYOUT: 3-COLUMN (same as Intake)
-| RIGHT PANEL: Tags include store eligible Target
-| ACTIONS: [ Add Item ] -> Item Pool
+/app/views/:viewId/budget
++--------------------------------------------------------------------------------------+
+| HEADER: Office Renovation | Lets Balance This | Over by $447                         |
++--------------------------------------------------------------------------------------+
+| YOUR BUDGET                              | YOUR ITEMS                               |
+| +-------------------+                    | +--------------------+                   |
+| | $2,400            |                    | | $2,847 (over)      |                   |
+| +-------------------+                    | +--------------------+                   |
+|                     (scale tips right when over budget)                              |
++--------------------------------------------------------------------------------------+
+| DRAG ITEMS OFF TO BALANCE                                                            |
+| +--------+ +--------+ +--------+ +--------+                                         |
+| | Lamp  | | Cables | | Plant  | | Art    |                                         |
+| | $89   | | $45    | | $60    | | $120   |                                         |
+| | NICE  | | NICE   | | NICE   | | NICE   |                                         |
+| +--------+ +--------+ +--------+ +--------+                                         |
+| MUST-HAVES (protected): Standing Desk $749 | Chair $450 | Monitor $350               |
+| LATER (dragged off): Plant $60 | Art $120                                          |
+| [Done Balancing]                                                                      |
++--------------------------------------------------------------------------------------+
 
 --------------------------------------------------------------------------------
-VIEW BUILDER  | MODE: GENERATED VIEW
+TRIP START - STORE PLANNING | MODE: TRIP (GENERATION)
 --------------------------------------------------------------------------------
-| HEADER: Views | Create
-| LAYOUT: 2-COLUMN
-| QUERY: Show me by budget impact
-| RESULT: High impact items first
-| COLUMN A: VIEW RESULTS
-|  - Diapers (High)
-|  - Coffee (Medium)
-| COLUMN B: VIEW OPTIONS
-|  [By Store] [By Priority] [By Tag] [By Person]
-| CTA: [Save View] [Start Trip]
+/app/trips/start
++--------------------------------------------------------------------------------------+
+| HEADER: Start Trip | Choose Store | Route Plan                                      |
++--------------------------------------------------------------------------------------+
+| STORE ZONES (CANVAS)                                                                 |
+| +-----------+    +-----------+                                                       |
+| | AMAZON    |    | BEST BUY  |                                                       |
+| | $1,199    |    | $350      |                                                       |
+| | Desk      |    | Monitor   |                                                       |
+| | Chair     |    |           |                                                       |
+| +-----------+    +-----------+                                                       |
+|                                                                                      |
+|            UNASSIGNED (drag to a store)                                              |
+|            Lamp | Plant | Cables                                                     |
+|                                                                                      |
+| +-----------+    +-----------+                                                       |
+| | IKEA      |    | + ADD     |                                                       |
+| | $0        |    | STORE     |                                                       |
+| | (empty)   |    |           |                                                       |
+| +-----------+    +-----------+                                                       |
+|                                                                                      |
+| Actions: [Generate Trip] [Draw Route]                                                |
++--------------------------------------------------------------------------------------+
 
 --------------------------------------------------------------------------------
-TRIP START  | MODE: TRIP (GENERATION)
+SHOP MODE - SWIPE FLOW | MODE: TRIP
 --------------------------------------------------------------------------------
-| HEADER: Start Trip
-| LAYOUT: SINGLE COLUMN
-| SELECT STORE: [Kroger] [Target] [Home Depot]
-| AUTO-INFER: Based on eligible items in pool
-| PREVIEW: Eligible items for Target
-|  - Diapers
-|  - Soap
-| CTA: [Generate Trip]
+/app/trips/:tripId
++--------------------------------------------------------------------------------------+
+| HEADER: Trip | Store: Amazon | $1,247 / $2,400 | Progress: 3 of 8                    |
++--------------------------------------------------------------------------------------+
+|                                    [ITEM IMAGE]                                     |
+|                                                                                      |
+|                           Ergonomic Office Chair                                     |
+|                           $450  Amazon                                               |
+|                           "The Herman Miller alternative"                            |
+|                                                                                      |
+| SWIPE LEFT: Skip for now    SWIPE RIGHT: Got it    SWIPE DOWN: Cant find             |
+| [Exit Shop Mode]                          Running total: $450 so far                 |
++--------------------------------------------------------------------------------------+
 
 --------------------------------------------------------------------------------
-TRIP START REFINEMENT (AID)  | MODE: TRIP
+RECEIPTS - MATCHING GAME | MODE: TRIP
 --------------------------------------------------------------------------------
-| WHEN: Trip preview shows ambiguous items
-| ACTION: Tap item -> AID to refine before generating trip
-| AID LAYOUT: 3-COLUMN (same as Intake)
-| LEFT: Details/Coaching | RIGHT: Image/Recommendations
-| ACTIONS: [Add to Trip] [Back]
+/app/trips/:tripId/receipts
++--------------------------------------------------------------------------------------+
+| HEADER: Trip Receipts | Store: Amazon                                               |
++--------------------------------------------------------------------------------------+
+| RECEIPT (LEFT)                              | YOUR ITEMS (RIGHT)                      |
+| +-----------------------------------------+ | +------------------------------------+ |
+| | ERGO-CHAIR-PRO     $449.99  ---->      | | | Ergonomic Chair      [X]            | |
+| | STANDDESK-60       $749.00  ---->      | | | Standing Desk        [X]            | |
+| | USB-HUB-7PORT       $34.99  ---->      | | | (not on list - add?)                 | |
+| | CABLE-MANAGE        $24.99  ---->      | | | Cable Management     [X]            | |
+| | TOTAL:            $1,258.97           | | | Monitor (not purchased)             | |
+| +-----------------------------------------+ | +------------------------------------+ |
+| DRAW LINES to connect receipt items to your items                                    |
+| Dotted lines = auto-suggested matches                                               |
+| COMPARISON: Planned $1,200 | Actual $1,258.97 | Difference +$58.97                    |
+| [Done Matching]                                                                      |
++--------------------------------------------------------------------------------------+
 
 --------------------------------------------------------------------------------
-TRIP CHECKLIST  | MODE: TRIP
+COLLABORATION - SHARED WORKSPACE | MODE: ITEM POOL
 --------------------------------------------------------------------------------
-| HEADER: Trip | Target | Offline Ready
-| LAYOUT: 2-COLUMN
-| COLUMN A: TO BUY
-|  [ ] Diapers
-|  [ ] Soap
-| COLUMN B: PURCHASED
-|  [X] Paper Towels
-| ACTIONS: [Add Receipt] [End Trip]
+/app/groups/:groupId
++--------------------------------------------------------------------------------------+
+| HEADER: Marketing Team | Active View: Office Renovation                              |
++--------------------------------------------------------------------------------------+
+| AVATARS AROUND SHARED CANVAS                                                         |
+| Alex (editing Desk)     Jordan (away)     Sarah (viewing)                             |
+|                                                                                      |
+| ACTIVE ITEMS                                                                         |
+| +---------+ +---------+ +---------+                                                  |
+| | Desk   | | Chair  | | Monitor|                                                  |
+| | $749   | | $450   | | $350   |                                                  |
+| | editing| | agreed | | ?     |                                                  |
+| +---------+ +---------+ +---------+                                                  |
+| Needs team approval: Tap to vote [Approve] [Reject] [Discuss]                         |
+| Recent: Alex changed Desk price to $749 | Sarah added Monitor                          |
++--------------------------------------------------------------------------------------+
 
 --------------------------------------------------------------------------------
-RECEIPT ENTRY  | MODE: TRIP
+EMPTY STATE - INPUT IS THE PAGE | MODE: ITEM POOL
 --------------------------------------------------------------------------------
-| HEADER: Receipt | Trip: Target
-| LAYOUT: SINGLE COLUMN
-| UPLOAD: [Choose File] [Upload]
-| LINE ITEMS
-|  Diapers  Actual $27.99 [X]
-|  Soap     Actual $4.49  [X]
-| SUMMARY: Budgeted $40 | Actual $32.48
-| ACTIONS: [Save] [Back to Trip]
-
---------------------------------------------------------------------------------
-PRICE MEMORY SUMMARY  | MODE: ITEM POOL
---------------------------------------------------------------------------------
-| HEADER: Price Memory
-| LAYOUT: SINGLE COLUMN
-| ITEMS
-|  Milk $3.50 (last paid)
-|  Eggs $2.90 (last paid)
-|  Diapers $27.99 (last paid)
-| ACTIONS: [Back to Pool]
+/app/pool (empty)
++--------------------------------------------------------------------------------------+
+| HEADER: Item Pool | New Project                                                      |
++--------------------------------------------------------------------------------------+
+| What do you need?                                                                    |
+| [____________________________________]                                               |
+| Try: "a comfortable desk chair"                                                      |
+|      "supplies for the team offsite"                                                 |
+|      "everything for the new apartment"                                              |
+|                                                                                      |
+| The rest of the UI appears as you add                                                |
++--------------------------------------------------------------------------------------+
