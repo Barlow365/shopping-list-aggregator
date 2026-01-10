@@ -1,188 +1,81 @@
-# One List
+# Shopping List Aggregator
 
-**One list. Every store. Real money control.**
+# CANONICAL PRODUCT MODEL (NO-DRIFT)
+This repository describes ONE system:
 
-A budget-aware shared shopping platform that turns chaotic household needs into a smart, shoppable plan—across any store, any household, or any group.
+1) ITEM POOL is the core object.
+   - Users add items I intend to buy.
+   - Items persist across time and are not trapped in store carts or store-specific lists.
 
----
+2) LISTS are GENERATED VIEWS of the Item Pool.
+   - A list is not a separate container.
+   - Lists are views created on demand based on how the user asks to see items (store, budget, priority, tag, person, etc.).
 
-## The Problem
+3) TRIPS are GENERATED SHOPPING VIEWS (store/time bound).
+   - A Trip is created when a user says Im going to Kroger/Target/Home Depot.
+   - The system generates a store-specific set of eligible items from the Item Pool.
+   - Trips can be saved for receipts/history, but items still belong to the Pool.
 
-Most "shopping list" apps solve remembering items. But people don't fail because they forget—they fail because:
+4) STORE selection is optional at capture time.
+   - Users may specify a store (from Target) OR leave unassigned.
+   - Store assignment/inference can happen at Trip Start (Im going to Kroger).
 
-- **Help exists in fragments** - One list for groceries, another for Target, sticky notes for hardware stores
-- **Small issues interrupt momentum** - Budget overruns, duplicate purchases, unclear priorities
-- **Asking feels awkward** - "Can you grab milk?" texts clutter group chats
-- **Financial tools punish** - No budget awareness until checkout, leading to cart abandonment
-- **No shared decision system** - Multiple people, multiple stores, mixed intents (food, kids, home, work)
+5) CROSS-POLLINATION is required.
+   - If the user goes to Target, show eligible items from prior intent even if previously associated with other stores.
+   - Items must always be movable/eligible across stores based on availability rules.
 
-People don't need another list. **They need a shared decision system for buying.**
+6) INTAKE MODE is onboarding and the default capture experience.
+   - First-run and empty states start with: What do you want to buy?
+   - The system asks lightweight follow-ups only after the user types/speaks intent.
 
----
+7) QUERY-DRIVEN VIEWS are first-class.
+   - Show me by budget impact.
+   - Show me Must items.
+   - Show me what to buy at Kroger.
+   - Show me Kids / Dinner / Remodel.
+   - Viewing is driven by how the user asks, not by navigating separate lists.
 
-## The Solution
+If any document or wireframe conflicts with this model, it is WRONG and must be rewritten to match.
 
-Shopping List Aggregator sits between intention and checkout:
-- **Before money is spent**
-- **Before conflict**
-- **Before waste**
-- **Before duplicate purchases**
+# WIREFRAME STYLE CONTRACT (NO-DRIFT)
+All wireframes in this repo must follow ONE visual grammar:
 
-### Core Innovation
+- Use the existing Inkwell-style planning layout already present in WIREFRAMES.md/MASTER_PLAN.md.
+- Use vertical rails, section blocks, and column layouts.
+- Do NOT introduce boxed UI mockups, new ASCII art styles, or different layout conventions.
+- Every wireframe must be a zoom of the same canonical system:
+  ITEM POOL  QUERY VIEW  TRIP GENERATION  SHOP MODE  RECEIPTS  PRICE MEMORY
 
-One shared list with multiple views:
-- View by **Store** (Target, Kroger, Home Depot)
-- View by **Aisle** (in-store shopping mode)
-- View by **Group/Tag** (Kids, Dinner, Remodel)
-- View by **Recipe** (ingredients auto-added)
-- View by **Priority** (Must → Nice-to-have)
-- View by **Budget** (buy within budget mode)
+Required conventions:
+- Each wireframe must include:
+  - HEADER line
+  - Page/Mode name
+  - 2-3 column layout where relevant
+  - Clear section headings (ALL CAPS)
+- Symbols:
+  [X] completed / purchased / confirmed
+  [>] active / in-progress
+  [.] planned / pending
+  [?] stubbed / reserved
+- Every screen must clearly indicate whether it operates on:
+  (A) ITEM POOL
+  (B) GENERATED VIEW
+  (C) TRIP
 
-**This is not multiple lists—it's multiple lenses on the same truth.**
+If any wireframe is not traceable to this system, rewrite or delete it.
 
----
+# SINGLE SOURCE OF TRUTH
+The canonical source of truth is:
+- docs/PRODUCT_MAP.md (what the system is)
+- docs/MASTER_PLAN.md (how the system behaves end-to-end)
 
-## Key Features
+WIREFRAMES.md and SITEMAP.md are derived artifacts and must match PRODUCT_MAP.md exactly.
+No new authoritative docs may be created without explicitly mapping to PRODUCT_MAP nodes.
 
-### 1. Flexible Capture
-- **Quick Entry**: "milk, cereal, bananas" auto-splits
-- **Voice Capture**: Natural language parsing
-- **Recipe Import**: Auto-add ingredients with cost estimates
-- **Product Selection**: Optional exact item selection with photos
 
-### 2. Smart Budget Controls
-- Real-time estimated total as you add items
-- Priority levels: Must / Should / Nice-to-have
-- Over-budget intelligence suggests removals
-- Recurring items forecast future needs
+## Repo Overview
 
-### 3. Group Buying
-- Pool demand across households
-- One shopper, multiple households
-- Split costs automatically
-- Track contributions
-
-### 4. Shopping Modes
-- **In-Store**: Full-screen checklist ordered by aisle
-- **Digital**: Direct integrations (Instacart, DoorDash, Walmart, Target, Uber)
-- **Offline-Friendly**: Works without cell service
-
-### 5. Receipt Scanning
-- OCR parses line items
-- Updates last price paid
-- Shows budget vs actual
-- Improves future estimates
-
----
-
-## Target Users
-
-### Primary
-- **Households / Couples / Roommates** - Shared groceries, Target runs, household basics
-- **Parents & Caregivers** - Kids items, meals, recurring needs, budget constraints
-- **Home Projects / Remodels** - Home Depot / Lowe's runs organized by room or phase
-
-### Secondary (High-leverage)
-- **Neighborhood / Community Runs** - One person shops for multiple households
-- **Small Teams** - Office snacks, supplies, events
-
----
-
-## Business Model
-
-**Revenue from vendors, not users.**
-
-- Vendor partnerships and referrals
-- Fulfillment margins on digital orders
-- Data insights for retailers (aggregated, anonymous)
-- Premium features (optional, not required)
-
-**User value proposition:** Free shared lists + budget control + group buying = household operating system.
-
----
-
-## Why This Wins
-
-| Feature | Competitors | Shopping List Aggregator |
-|---------|-------------|--------------------------|
-| **Multi-store support** | Single store or manual | Native cross-store views |
-| **Budget awareness** | Post-checkout only | Real-time, before spending |
-| **Group buying** | Not supported | Core feature with cost splitting |
-| **Priority levels** | Binary (on list or not) | Must / Should / Nice-to-have |
-| **Receipt scanning** | Manual or missing | Auto-parse with price learning |
-| **Community pooling** | Not available | Neighborhood demand aggregation |
-
----
-
-## Market Opportunity
-
-- **Global group-buying market**: $19.15B (2025) → $37.03B (2034) at 7.6% CAGR
-- **Shopping list app market**: $1.32B (2024) → $6.54B (2033) at 18.7% CAGR
-- **North America share**: ~25% of group-buying market with 6.9% CAGR
-- **Driver**: Cost-conscious consumers, smartphone penetration, social commerce
-
-**Gap in market:** No platform combines budget-aware lists, multi-store aggregation, and community pooling.
-
----
-
-## Technology Stack
-
-- **Frontend**: React Native (iOS + Android) or Progressive Web App
-- **Backend**: Node.js / Python (FastAPI)
-- **Database**: PostgreSQL with Redis caching
-- **Real-time**: WebSocket connections for live sync
-- **Integrations**: Instacart API, store APIs, receipt OCR services
-- **Hosting**: AWS / Google Cloud / Vercel
-
----
-
-## Documentation
-
-This repository contains comprehensive documentation organized in `/docs/`:
-
-### Master Plan
-| Document | Description |
-|----------|-------------|
-| [MASTER_PLAN.md](./docs/MASTER_PLAN.md) | **Complete project plan** - architecture, features, wireframes, implementation roadmap |
-
-### Planning
-| Document | Description |
-|----------|-------------|
-| [MVP_SPEC.md](./docs/planning/MVP_SPEC.md) | MVP feature definition and success metrics |
-| [ROADMAP.md](./docs/planning/ROADMAP.md) | Implementation milestones |
-| [EXECUTION_CHECKLIST.md](./docs/planning/EXECUTION_CHECKLIST.md) | Development checklist |
-
-### Architecture
-| Document | Description |
-|----------|-------------|
-| [ARCHITECTURE.md](./docs/architecture/ARCHITECTURE.md) | Technical design and system architecture |
-| [PAGES_COMPONENTS_PLAN.md](./docs/architecture/PAGES_COMPONENTS_PLAN.md) | Route structure and component breakdown |
-
-### UX
-| Document | Description |
-|----------|-------------|
-| [WIREFRAMES.md](./docs/ux/WIREFRAMES.md) | ASCII wireframes for UI layouts |
-| [SITEMAP.md](./docs/ux/SITEMAP.md) | Full route map with feature flags |
-
-### Research
-| Document | Description |
-|----------|-------------|
-| [FEATURES.md](./docs/research/FEATURES.md) | Detailed feature specifications |
-| [MARKET_ANALYSIS.md](./docs/research/MARKET_ANALYSIS.md) | Market research and competitive analysis |
-
----
-
-## Status
-
-**Phase:** Ready for Development
-**Approach:** Full feature set at launch - no phased rollout
-
----
-
-## Contact
-
-For questions, partnerships, or investment inquiries, please contact the project team.
-
----
-
-*One list. Every store. Real money control.*
+- docs/PRODUCT_MAP.md: canonical product map (item pool -> views -> trips)
+- docs/MASTER_PLAN.md: end-to-end behavior and phased execution
+- docs/ux/WIREFRAMES.md: derived wireframes (no new structure)
+- docs/ux/SITEMAP.md: derived route map (no new structure)

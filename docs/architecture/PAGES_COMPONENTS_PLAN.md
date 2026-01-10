@@ -1,166 +1,91 @@
-================================================================================
-THE ONE LIST SYSTEM
-Capture  Decide  Shop  Close Loop  Scale Up
-================================================================================
+# Pages and Components Plan
 
-# Pages and Components Plan (MVP with Phased Execution)
+# CANONICAL PRODUCT MODEL (NO-DRIFT)
+This repository describes ONE system:
 
-This plan enumerates key pages, minimal components, and shared state/data needs.
-It is a zoom-level implementation guide for docs/PRODUCT_MAP.md.
+1) ITEM POOL is the core object.
+   - Users add items I intend to buy.
+   - Items persist across time and are not trapped in store carts or store-specific lists.
 
----
+2) LISTS are GENERATED VIEWS of the Item Pool.
+   - A list is not a separate container.
+   - Lists are views created on demand based on how the user asks to see items (store, budget, priority, tag, person, etc.).
 
-## Pages and Minimal Components
+3) TRIPS are GENERATED SHOPPING VIEWS (store/time bound).
+   - A Trip is created when a user says Im going to Kroger/Target/Home Depot.
+   - The system generates a store-specific set of eligible items from the Item Pool.
+   - Trips can be saved for receipts/history, but items still belong to the Pool.
 
-### Marketing
+4) STORE selection is optional at capture time.
+   - Users may specify a store (from Target) OR leave unassigned.
+   - Store assignment/inference can happen at Trip Start (Im going to Kroger).
 
-- `/` Home
-  - Components: HeroValueProp, CTAButtons, SocialProofStrip, FooterLinks
-- `/how-it-works`
-  - Components: StepCard, CTAInline
-- `/features`
-  - Components: FeatureGrid, FeatureCard
-- `/pricing`
-  - Components: PricingCard, FAQStub
-- `/privacy`, `/terms`
-  - Components: LegalText
+5) CROSS-POLLINATION is required.
+   - If the user goes to Target, show eligible items from prior intent even if previously associated with other stores.
+   - Items must always be movable/eligible across stores based on availability rules.
 
-### Auth + Onboarding
+6) INTAKE MODE is onboarding and the default capture experience.
+   - First-run and empty states start with: What do you want to buy?
+   - The system asks lightweight follow-ups only after the user types/speaks intent.
 
-- `/login`
-  - Components: AuthForm, OAuthPlaceholder
-- `/signup`
-  - Components: AuthForm
-- `/onboarding`
-  - Components: StepRail, GroupNameInput, ListNameInput, BudgetInput, InviteLinkPanel, InviteMemberList, LivePreviewPanel, PrimaryActionBar
+7) QUERY-DRIVEN VIEWS are first-class.
+   - Show me by budget impact.
+   - Show me Must items.
+   - Show me what to buy at Kroger.
+   - Show me Kids / Dinner / Remodel.
+   - Viewing is driven by how the user asks, not by navigating separate lists.
 
-### App Home
+If any document or wireframe conflicts with this model, it is WRONG and must be rewritten to match.
 
-- `/app/home`
-  - Components: ActiveListCard, QuickStatsRow, ActivityFeed, ShortcutBar
+# WIREFRAME STYLE CONTRACT (NO-DRIFT)
+All wireframes in this repo must follow ONE visual grammar:
 
-### Groups
+- Use the existing Inkwell-style planning layout already present in WIREFRAMES.md/MASTER_PLAN.md.
+- Use vertical rails, section blocks, and column layouts.
+- Do NOT introduce boxed UI mockups, new ASCII art styles, or different layout conventions.
+- Every wireframe must be a zoom of the same canonical system:
+  ITEM POOL  QUERY VIEW  TRIP GENERATION  SHOP MODE  RECEIPTS  PRICE MEMORY
 
-- `/app/groups`
-  - Components: GroupList, CreateGroupButton
-- `/app/groups/:groupId`
-  - Components: GroupHeader, MemberList, PermissionsPanelStub, ActiveListSelector, ArchiveList
+Required conventions:
+- Each wireframe must include:
+  - HEADER line
+  - Page/Mode name
+  - 2-3 column layout where relevant
+  - Clear section headings (ALL CAPS)
+- Symbols:
+  [X] completed / purchased / confirmed
+  [>] active / in-progress
+  [.] planned / pending
+  [?] stubbed / reserved
+- Every screen must clearly indicate whether it operates on:
+  (A) ITEM POOL
+  (B) GENERATED VIEW
+  (C) TRIP
 
-### List Hub and Tabs
+If any wireframe is not traceable to this system, rewrite or delete it.
 
-- `/app/lists/:listId`
-  - Components: ListHeader, BudgetRibbon, TabNav, ListSummary
 
-#### Items (Capture)
+## Pages
 
-- `/app/lists/:listId/items`
-  - Components: QuickEntryInput, ItemList, ItemRow, ItemDetailSheet
-  - Utilities: BulkEditBar, FilterBar
+- /app/intake: Intake Mode
+- /app/pool: Item Pool home
+- /app/views: View builder
+- /app/trips/start: Trip Start
+- /app/trips/:tripId: Trip Checklist
+- /app/trips/:tripId/receipts: Receipt Entry
+- /app/settings, /app/help
 
-#### Store View (Shop)
+## Components
 
-- `/app/lists/:listId/stores`
-  - Components: StoreChipBar, StoreItemList, UnassignedItemPanel
-  - Utilities: AssignToStoreAction
+- IntakePrompt, IntakeParser, FollowUpQuestion, AssistedItemDefinition
+- PoolItemRow, PoolFilters, PoolSummary
+- ViewBuilder, ViewResultList
+- TripStorePicker, TripPreview, TripChecklist
+- ReceiptUpload, ReceiptLineItems, PriceMemoryPanel
 
-#### Budget (Decide)
+## Shared State
 
-- `/app/lists/:listId/budget`
-  - Components: BudgetEditor, TotalVsBudget, OverBudgetBanner, TradeoffActions
-  - Utilities: PriceMemoryPanel
-
-#### Shop Mode (Shop)
-
-- `/app/lists/:listId/shop`
-  - Components: ShopModeHeader, Checklist, PurchaseToggle, OfflineIndicator
-
-#### Receipts (Close the Loop)
-
-- `/app/lists/:listId/receipts`
-  - Components: ReceiptUpload, ManualMatchTable, ActualPriceInput, BudgetActualSummary
-
-#### History (Close the Loop)
-
-- `/app/lists/:listId/history`
-  - Components: ActivityTimeline, PriceChangeLog
-
-#### Voice (Capture)
-
-- `/app/lists/:listId/voice`
-  - Components: VoiceStubPanel, PasteInputFallback
-
-#### Recipes (Decide)
-
-- `/app/lists/:listId/recipes`
-  - Components: RecipeList, RecipeCard, AddRecipeForm
-
-#### Recurring (Scale Up)
-
-- `/app/lists/:listId/recurring`
-  - Components: RecurringRuleList, AddRecurringRule
-
-#### Delivery (Shop)
-
-- `/app/lists/:listId/delivery`
-  - Components: DeliveryStubPanel, ExportListAction
-
-#### Pooling (Scale Up)
-
-- `/app/lists/:listId/pooling`
-  - Components: PoolSetupPanel, BuyerAssignmentTable, SplitSummary
-
-#### Approvals / Caps (Scale Up)
-
-- `/app/lists/:listId/controls`
-  - Components: ApprovalRulesList, AddCapRuleForm, PendingApprovalsQueue
-
-#### Upgrades
-
-- `/app/lists/:listId/upgrades`
-  - Components: FeatureFlagGrid, PhaseBadge
-
-### Settings and Help
-
-- `/app/settings`
-  - Components: ProfileForm, SessionList, MemberManagement
-- `/app/help`
-  - Components: FeedbackForm, SupportLinks
-
-### System States
-
-- `/system`
-  - Components: EmptyState, ErrorState, OfflineBanner, SyncConflictNotice
-
----
-
-## Shared State and Data Model Needs
-
-### Shared State (Client)
-
-- Active list context (listId, groupId)
-- User session and membership
-- Feature flags and phase gating
-- Filters (store, priority, tag, added-by)
-- Offline state and sync status
-
-### Data Models (Server)
-
-- Users (id, email, profile)
-- Groups (id, name, members, permissions)
-- Lists (id, groupId, name, status: active/archived, budget)
-- Items (id, listId, name, qty, priority, storeId, priceEstimate, status, addedBy)
-- Stores (id, listId, name, custom)
-- Receipts (id, listId, images, lineItems, actualTotal)
-- PriceMemory (itemName, lastPaid, lastUpdated)
-- ActivityLog (actorId, action, entityId, timestamp)
-- FeatureFlags (feature, phase)
-- ApprovalRules (listId, ruleType, threshold, approvers)
-- ApprovalQueue (listId, itemId, status, requestedBy)
-
----
-
-## Phase Behavior Summary
-
-- Phase 0: route exists with stub UI, no blocking flows
-- Phase 1: manual workflows and data capture
-- Phase 2: automation and integrations
+- Pool state
+- View query state
+- Trip state
+- Price memory

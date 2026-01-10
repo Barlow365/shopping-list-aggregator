@@ -1,3 +1,9 @@
+## Terminology Note
+
+This research uses legacy list terminology. In this repo, list refers to the Item Pool and generated views.
+
+---
+
 # Shopping List Aggregator - Market Analysis
 
 **Version:** 1.0

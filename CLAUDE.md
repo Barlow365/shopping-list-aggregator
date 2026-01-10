@@ -1,110 +1,78 @@
-# CLAUDE.md
+# CLAUDE
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+# CANONICAL PRODUCT MODEL (NO-DRIFT)
+This repository describes ONE system:
 
-## Project Overview
+1) ITEM POOL is the core object.
+   - Users add items I intend to buy.
+   - Items persist across time and are not trapped in store carts or store-specific lists.
 
-**One List** is a budget-aware shared shopping platform with multi-store views, real-time collaboration, and group buying capabilities.
+2) LISTS are GENERATED VIEWS of the Item Pool.
+   - A list is not a separate container.
+   - Lists are views created on demand based on how the user asks to see items (store, budget, priority, tag, person, etc.).
 
-**Tagline:** One list. Every store. Real money control.
+3) TRIPS are GENERATED SHOPPING VIEWS (store/time bound).
+   - A Trip is created when a user says Im going to Kroger/Target/Home Depot.
+   - The system generates a store-specific set of eligible items from the Item Pool.
+   - Trips can be saved for receipts/history, but items still belong to the Pool.
 
-**Core Concept:** One shared list with multiple views (by store, aisle, group/tag, recipe, priority, budget) - "multiple lenses on the same truth."
+4) STORE selection is optional at capture time.
+   - Users may specify a store (from Target) OR leave unassigned.
+   - Store assignment/inference can happen at Trip Start (Im going to Kroger).
 
-## Primary Documentation
+5) CROSS-POLLINATION is required.
+   - If the user goes to Target, show eligible items from prior intent even if previously associated with other stores.
+   - Items must always be movable/eligible across stores based on availability rules.
 
-**Start here:** [docs/MASTER_PLAN.md](./docs/MASTER_PLAN.md) - Complete project plan with architecture, features, wireframes, and implementation roadmap.
+6) INTAKE MODE is onboarding and the default capture experience.
+   - First-run and empty states start with: What do you want to buy?
+   - The system asks lightweight follow-ups only after the user types/speaks intent.
 
-## Technology Stack
+7) QUERY-DRIVEN VIEWS are first-class.
+   - Show me by budget impact.
+   - Show me Must items.
+   - Show me what to buy at Kroger.
+   - Show me Kids / Dinner / Remodel.
+   - Viewing is driven by how the user asks, not by navigating separate lists.
 
-| Component | Technology |
-|-----------|------------|
-| **Frontend** | React + TypeScript + Next.js 14 (App Router) |
-| **UI** | Tailwind CSS + shadcn/ui |
-| **State** | Zustand |
-| **Forms** | React Hook Form + Zod |
-| **Backend** | Node.js + Express |
-| **Real-time** | Socket.io |
-| **Database** | PostgreSQL + Redis |
-| **Auth** | JWT + bcrypt |
-| **OCR** | Mindee / AWS Textract |
-| **NLP** | OpenAI API / Claude |
+If any document or wireframe conflicts with this model, it is WRONG and must be rewritten to match.
 
-## MVP Philosophy
+# WIREFRAME STYLE CONTRACT (NO-DRIFT)
+All wireframes in this repo must follow ONE visual grammar:
 
-**Full feature set at launch.** No deferred features. Everything ships in MVP:
-- Voice capture with NLP parsing
-- Receipt OCR with price learning
-- Recipe import with ingredient scaling
-- Delivery integrations (Instacart, DoorDash)
-- Group buying with automatic cost splitting
-- Approval rules and spending controls
+- Use the existing Inkwell-style planning layout already present in WIREFRAMES.md/MASTER_PLAN.md.
+- Use vertical rails, section blocks, and column layouts.
+- Do NOT introduce boxed UI mockups, new ASCII art styles, or different layout conventions.
+- Every wireframe must be a zoom of the same canonical system:
+  ITEM POOL  QUERY VIEW  TRIP GENERATION  SHOP MODE  RECEIPTS  PRICE MEMORY
 
-## Documentation Structure
+Required conventions:
+- Each wireframe must include:
+  - HEADER line
+  - Page/Mode name
+  - 2-3 column layout where relevant
+  - Clear section headings (ALL CAPS)
+- Symbols:
+  [X] completed / purchased / confirmed
+  [>] active / in-progress
+  [.] planned / pending
+  [?] stubbed / reserved
+- Every screen must clearly indicate whether it operates on:
+  (A) ITEM POOL
+  (B) GENERATED VIEW
+  (C) TRIP
 
-```
-/docs/
-├── MASTER_PLAN.md           ← Start here (comprehensive)
-├── planning/
-│   ├── MVP_SPEC.md
-│   ├── ROADMAP.md
-│   └── EXECUTION_CHECKLIST.md
-├── architecture/
-│   ├── ARCHITECTURE.md
-│   └── PAGES_COMPONENTS_PLAN.md
-├── ux/
-│   ├── WIREFRAMES.md
-│   └── SITEMAP.md
-└── research/
-    ├── FEATURES.md
-    └── MARKET_ANALYSIS.md
-```
+If any wireframe is not traceable to this system, rewrite or delete it.
 
-## Route Structure
+# SINGLE SOURCE OF TRUTH
+The canonical source of truth is:
+- docs/PRODUCT_MAP.md (what the system is)
+- docs/MASTER_PLAN.md (how the system behaves end-to-end)
 
-**Marketing:** `/`, `/how-it-works`, `/features`, `/pricing`, `/privacy`, `/terms`
+WIREFRAMES.md and SITEMAP.md are derived artifacts and must match PRODUCT_MAP.md exactly.
+No new authoritative docs may be created without explicitly mapping to PRODUCT_MAP nodes.
 
-**Auth:** `/login`, `/signup`, `/onboarding`
 
-**App:** `/app/home`, `/app/groups`, `/app/groups/:groupId`, `/app/settings`
-
-**List tabs:** `/app/lists/:listId/items`, `/stores`, `/budget`, `/shop`, `/receipts`, `/history`, `/voice`, `/recipes`, `/recurring`, `/delivery`, `/pooling`, `/controls`
-
-## Core Data Models
-
-- **Users** - Account information
-- **Groups** - Households with members
-- **Lists** - Shopping lists with budget
-- **Items** - List items with priority, store, tags
-- **Stores** - Shopping destinations
-- **Receipts** - Uploaded receipts with OCR data
-- **PriceHistory** - Historical prices from receipts
-- **Recipes** - Saved recipes with ingredients
-- **RecurringRules** - Auto-add schedules
-
-See [docs/MASTER_PLAN.md](./docs/MASTER_PLAN.md) for full PostgreSQL schema.
-
-## Key Components
-
-| Component | Purpose |
-|-----------|---------|
-| `budget-spine` | Always-visible budget status panel |
-| `quick-add-input` | Fast item entry with comma-split |
-| `over-budget-banner` | Smart suggestions when over budget |
-| `shop-mode/checklist` | Full-screen in-store shopping mode |
-| `receipt-upload` | OCR receipt processing |
-
-## MVP Rules (Non-Negotiables)
-
-- Items come from user input only (no product catalog)
-- Store assignment is optional at creation
-- One active list per user; archives are read-only
-- Budget spine visible on all list surfaces
-- Real-time sync < 500ms latency
-- Offline mode for core shopping flows
-
-## When Modifying Scope
-
-Update these files on every scope change:
-- `docs/MASTER_PLAN.md`
-- `docs/ux/SITEMAP.md`
-- `docs/architecture/PAGES_COMPONENTS_PLAN.md`
+Notes:
+- Follow the canonical product model in every change.
+- Update derived docs only as a reflection of PRODUCT_MAP and MASTER_PLAN.

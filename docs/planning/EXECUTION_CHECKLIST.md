@@ -1,70 +1,84 @@
-================================================================================
-THE ONE LIST SYSTEM - EXECUTION CHECKLIST
-Capture  Decide  Shop  Close Loop  Scale Up
-================================================================================
+# Execution Checklist (Item Pool Model)
 
-Purpose: deliver the full MVP with phased execution, avoiding overengineering while
-being thorough and test-driven.
+# CANONICAL PRODUCT MODEL (NO-DRIFT)
+This repository describes ONE system:
 
-================================================================================
-PHASE 0 - FOUNDATIONS (Scaffolding + Stubs)
-================================================================================
+1) ITEM POOL is the core object.
+   - Users add items I intend to buy.
+   - Items persist across time and are not trapped in store carts or store-specific lists.
 
-- Routes: implement full route map from SITEMAP.md with feature flags per route
-- Global layout: header, nav, list context, budget spine
-- Stub pages: all phased routes render with clear labels
-- States: empty, error, offline, and sync conflict states
-- Testing: route smoke tests + layout snapshot
-- Exit: every route renders, no broken nav, no missing stubs
+2) LISTS are GENERATED VIEWS of the Item Pool.
+   - A list is not a separate container.
+   - Lists are views created on demand based on how the user asks to see items (store, budget, priority, tag, person, etc.).
 
-================================================================================
-PHASE 1 - CORE MANUAL WORKFLOWS (MVP Proof)
-================================================================================
+3) TRIPS are GENERATED SHOPPING VIEWS (store/time bound).
+   - A Trip is created when a user says Im going to Kroger/Target/Home Depot.
+   - The system generates a store-specific set of eligible items from the Item Pool.
+   - Trips can be saved for receipts/history, but items still belong to the Pool.
 
-- Items: quick add, split, edit, priority, status
-- Budget: manual estimates, total, over-budget banner, remove nice-to-have
-- Store view: manual assignment, filter, unassigned bucket
-- Shop mode: checklist, store filter, offline-friendly
-- Receipts: manual match + price updates
-- Groups: create group, members, invite link, one active list + archives
-- Testing: end-to-end flow (create list -> add items -> budget -> shop -> receipt)
-- Exit: all core flows work without automation
+4) STORE selection is optional at capture time.
+   - Users may specify a store (from Target) OR leave unassigned.
+   - Store assignment/inference can happen at Trip Start (Im going to Kroger).
 
-================================================================================
-PHASE 1.5 - MANUAL EXTENDED FEATURES (Still MVP)
-================================================================================
+5) CROSS-POLLINATION is required.
+   - If the user goes to Target, show eligible items from prior intent even if previously associated with other stores.
+   - Items must always be movable/eligible across stores based on availability rules.
 
-- Recipes: manual recipe cards, add ingredients to list
-- Voice: paste text input fallback
-- Recurring: manual recurrence rules
-- Delivery: export list action
-- Pooling: manual buyer assignment
-- Controls: manual approvals/caps tagging
-- Testing: each tab opens; manual actions save; no blocking
-- Exit: extended features usable without automation
+6) INTAKE MODE is onboarding and the default capture experience.
+   - First-run and empty states start with: What do you want to buy?
+   - The system asks lightweight follow-ups only after the user types/speaks intent.
 
-================================================================================
-PHASE 2 - AUTOMATION + INTEGRATIONS (Post-Validation)
-================================================================================
+7) QUERY-DRIVEN VIEWS are first-class.
+   - Show me by budget impact.
+   - Show me Must items.
+   - Show me what to buy at Kroger.
+   - Show me Kids / Dinner / Remodel.
+   - Viewing is driven by how the user asks, not by navigating separate lists.
 
-- Receipt OCR: auto extraction + reconciliation
-- Voice: NLP capture + auto item creation
-- Recipes: URL import + auto ingredient mapping
-- Delivery: partner integrations (Instacart/DoorDash)
-- Recurring: auto add + forecasting
-- Pooling: split payments + approvals
-- Controls: automated gating + approvals
-- Testing: integration suites + monitoring + rollback plan
-- Exit: automation improves speed without breaking manual flows
+If any document or wireframe conflicts with this model, it is WRONG and must be rewritten to match.
 
-================================================================================
-CROSS-CUTTING GUARDRAILS (Always On)
-================================================================================
+# WIREFRAME STYLE CONTRACT (NO-DRIFT)
+All wireframes in this repo must follow ONE visual grammar:
 
-- No product catalog or store database in early phases
-- Store assignment is deferred and optional
-- One active list per user; archives are read-only
-- Budget stays visible in list surfaces
-- No automation until manual workflows are stable
-- Update MVP_SPEC.md, SITEMAP.md, PAGES_COMPONENTS_PLAN.md on every scope change
-- No merge without smoke tests + UX copy review
+- Use the existing Inkwell-style planning layout already present in WIREFRAMES.md/MASTER_PLAN.md.
+- Use vertical rails, section blocks, and column layouts.
+- Do NOT introduce boxed UI mockups, new ASCII art styles, or different layout conventions.
+- Every wireframe must be a zoom of the same canonical system:
+  ITEM POOL  QUERY VIEW  TRIP GENERATION  SHOP MODE  RECEIPTS  PRICE MEMORY
+
+Required conventions:
+- Each wireframe must include:
+  - HEADER line
+  - Page/Mode name
+  - 2-3 column layout where relevant
+  - Clear section headings (ALL CAPS)
+- Symbols:
+  [X] completed / purchased / confirmed
+  [>] active / in-progress
+  [.] planned / pending
+  [?] stubbed / reserved
+- Every screen must clearly indicate whether it operates on:
+  (A) ITEM POOL
+  (B) GENERATED VIEW
+  (C) TRIP
+
+If any wireframe is not traceable to this system, rewrite or delete it.
+
+## Phased Execution
+
+Phase 0: Foundations
+- Routes: /app/intake, /app/pool, /app/views, /app/trips/start, /app/trips/:tripId
+- Layout: header, rail sections, pool context
+- Stubs: view builder, trip generation, receipt entry
+
+Phase 1: Manual Core
+- Intake Mode: parse items, ask one follow-up at a time
+- Item Pool: add/edit/tag items
+- Trip Start: choose/infer store -> generate trip
+- Trip Mode: checklist + offline checkoff
+- Receipts: manual entry attached to trip
+
+Phase 2: Automation
+- NLP intake parsing
+- Auto store inference
+- OCR receipts -> price memory

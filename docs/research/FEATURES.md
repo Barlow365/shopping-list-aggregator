@@ -1,96 +1,78 @@
-# Shopping List Aggregator - Features Guide
+# FEATURES (GLOSSARY)
 
-**Version:** 1.1
-**Last Updated:** January 2026
+# CANONICAL PRODUCT MODEL (NO-DRIFT)
+This repository describes ONE system:
 
----
+1) ITEM POOL is the core object.
+   - Users add items I intend to buy.
+   - Items persist across time and are not trapped in store carts or store-specific lists.
 
-## PRODUCT_MAP Binding
+2) LISTS are GENERATED VIEWS of the Item Pool.
+   - A list is not a separate container.
+   - Lists are views created on demand based on how the user asks to see items (store, budget, priority, tag, person, etc.).
 
-This guide is a feature-level expansion of docs/PRODUCT_MAP.md.
-Every feature below maps to a PRODUCT_MAP node and phase.
+3) TRIPS are GENERATED SHOPPING VIEWS (store/time bound).
+   - A Trip is created when a user says Im going to Kroger/Target/Home Depot.
+   - The system generates a store-specific set of eligible items from the Item Pool.
+   - Trips can be saved for receipts/history, but items still belong to the Pool.
 
----
+4) STORE selection is optional at capture time.
+   - Users may specify a store (from Target) OR leave unassigned.
+   - Store assignment/inference can happen at Trip Start (Im going to Kroger).
 
-## Core Objects
+5) CROSS-POLLINATION is required.
+   - If the user goes to Target, show eligible items from prior intent even if previously associated with other stores.
+   - Items must always be movable/eligible across stores based on availability rules.
 
-| Object | Description | Key Fields |
-|--------|-------------|------------|
-| List | Single active list per user | name, budget, members, status |
-| Item | User-entered shopping item | name, qty, store, price, priority, status |
-| Store | Store lens for items | name, custom flag |
-| Receipt | Post-purchase record | items, actual prices, total |
-| Group | Household or team | members, permissions, active list |
+6) INTAKE MODE is onboarding and the default capture experience.
+   - First-run and empty states start with: What do you want to buy?
+   - The system asks lightweight follow-ups only after the user types/speaks intent.
 
----
+7) QUERY-DRIVEN VIEWS are first-class.
+   - Show me by budget impact.
+   - Show me Must items.
+   - Show me what to buy at Kroger.
+   - Show me Kids / Dinner / Remodel.
+   - Viewing is driven by how the user asks, not by navigating separate lists.
 
-## Feature Lenses (Aligned to PRODUCT_MAP)
+If any document or wireframe conflicts with this model, it is WRONG and must be rewritten to match.
 
-### Capture
+# WIREFRAME STYLE CONTRACT (NO-DRIFT)
+All wireframes in this repo must follow ONE visual grammar:
 
-PRODUCT_MAP nodes: CAPTURE > Items, Voice, Recipes
+- Use the existing Inkwell-style planning layout already present in WIREFRAMES.md/MASTER_PLAN.md.
+- Use vertical rails, section blocks, and column layouts.
+- Do NOT introduce boxed UI mockups, new ASCII art styles, or different layout conventions.
+- Every wireframe must be a zoom of the same canonical system:
+  ITEM POOL  QUERY VIEW  TRIP GENERATION  SHOP MODE  RECEIPTS  PRICE MEMORY
 
-- Items (Phase 1): quick add, comma split, qty/notes, added-by attribution
-- Voice (Phase 0/1/2): stub -> paste fallback -> NLP capture
-- Recipes (Phase 0/1/2): stub -> manual cards -> URL import
+Required conventions:
+- Each wireframe must include:
+  - HEADER line
+  - Page/Mode name
+  - 2-3 column layout where relevant
+  - Clear section headings (ALL CAPS)
+- Symbols:
+  [X] completed / purchased / confirmed
+  [>] active / in-progress
+  [.] planned / pending
+  [?] stubbed / reserved
+- Every screen must clearly indicate whether it operates on:
+  (A) ITEM POOL
+  (B) GENERATED VIEW
+  (C) TRIP
 
-### Decide
+If any wireframe is not traceable to this system, rewrite or delete it.
 
-PRODUCT_MAP nodes: DECIDE > Budget, Priorities
 
-- Budget (Phase 1): manual estimates, running total, over-budget banner
-- Priorities (Phase 1): Must / Should / Nice-to-have
-- Actions: remove nice-to-have, show must-only
+## Definitions
 
-### Shop
-
-PRODUCT_MAP nodes: SHOP > Store Assignment, Store Filters, Shop Mode
-
-- Store assignment (Phase 1): optional and deferred
-- Store filters (Phase 1): multi-store lens and unassigned bucket
-- Shop mode (Phase 1): in-store checklist, offline-friendly
-- Delivery (Phase 0/1/2): stub -> export -> integrations
-
-### Close Loop
-
-PRODUCT_MAP nodes: CLOSE LOOP > Receipts, History
-
-- Receipts (Phase 1): upload + manual match + actual prices
-- Price memory (Phase 1): last paid price per item
-- History (Phase 0/1/2): stub -> activity log -> insights
-
-### Scale Up
-
-PRODUCT_MAP nodes: SCALE UP > Recurring, Pooling, Controls, Upgrades
-
-- Recurring (Phase 0/1/2): stub -> manual rules -> auto add + forecasting
-- Pooling (Phase 0/1/2): stub -> manual assignment -> split payments
-- Controls (Phase 0/1/2): stub -> manual caps -> automated approvals
-- Upgrades (Phase 0): feature flags and future toggles
-
----
-
-## Behavioral Rules (Non-Negotiables)
-
-- Items originate only from user input inside a list.
-- Store assignment is optional and deferred.
-- One active list per user; archives are read-only.
-- Manual workflows are stable before automation is introduced.
-
----
-
-## Example Flows (Text-Only)
-
-Create list -> add items -> set budget -> shop -> enter receipt
-
-Onboarding:
-1. Create group
-2. Create list
-3. Set budget (optional)
-4. Invite members
-
-Shopping:
-1. Filter by store
-2. Enter shop mode
-3. Check off items
-4. Enter receipt (optional)
+- Item Pool: persistent set of intended purchases.
+- Item: single intended purchase in the pool.
+- Item Tags: store eligibility, priority, budget relevance, who/what its for.
+- View: generated query result from the pool.
+- Trip: generated store/time view of eligible pool items.
+- Intake Mode: guided capture experience.
+- Assisted Item Definition (AID): 3-panel clarifier to refine items without store lock-in.
+- Receipt: attached to Trip, updates price memory.
+- Price Memory: last paid prices used for estimates.
