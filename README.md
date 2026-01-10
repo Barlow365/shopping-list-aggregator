@@ -75,7 +75,10 @@ No new authoritative docs may be created without explicitly mapping to PRODUCT_M
 
 ## Repo Overview
 
-- [docs/PRODUCT_MAP.md](docs/PRODUCT_MAP.md): canonical product map (item pool -> views -> trips)
-- [docs/MASTER_PLAN.md](docs/MASTER_PLAN.md): end-to-end behavior and phased execution
-- [docs/ux/WIREFRAMES.md](docs/ux/WIREFRAMES.md): derived wireframes (no new structure)
-- [docs/ux/SITEMAP.md](docs/ux/SITEMAP.md): derived route map (no new structure)
+INKWELL INDEX
+/docs +-----------------------------------------------+
+||| [PRODUCT_MAP.md](docs/PRODUCT_MAP.md)  || canonical map (pool -> views -> trips)
+||| [MASTER_PLAN.md](docs/MASTER_PLAN.md)  || end-to-end behavior + phases
+||| ux/WIREFRAMES.md  -> [WIREFRAMES](docs/ux/WIREFRAMES.md)
+||| ux/SITEMAP.md     -> [SITEMAP](docs/ux/SITEMAP.md)
+-----------------------------------------------+
