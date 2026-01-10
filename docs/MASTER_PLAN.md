@@ -1759,29 +1759,23 @@ Each phase builds on the previous. Every phase includes: implementation, tests, 
 |                                                                              |
 +------------------------------------------------------------------------------+
 
+
 /onboarding
 +------------------------------------------------------------------------------+
-| LOGO                                                                         |
+| HEADER: Back | Onboarding | Step 1 of 4                                      |
 +------------------------------------------------------------------------------+
-|                                                                              |
-|                     Let's set up your household                              |
-|                                                                              |
-|                     Household name                                           |
-|                     [The Johnsons_________________]                          |
-|                                                                              |
-|                     Your first list                                          |
-|                     [Weekly Groceries_____________]                          |
-|                                                                              |
-|                     Budget (optional)                                        |
-|                     [$150___]                                                |
-|                                                                              |
-|                     [Continue]                                               |
-|                                                                              |
-|                     ─────────────────────────────────────────────            |
-|                                                                              |
-|                     Invite your household (optional)                         |
-|                     [Copy Invite Link]                                       |
-|                                                                              |
+| PROGRESS: [Group]--[List]--[Budget]--[Invite]                                |
++-----------------------------------------+------------------------------------+
+| SETUP PANEL                             | LIVE PREVIEW                       |
+| GROUP NAME [________________]           | LIST: Weekly Groceries             |
+| LIST NAME  [________________]           | Budget: $150 (optional)             |
+| BUDGET     [$____] (skip ok)            | Members: You                        |
+| INVITE LINK [Copy]  [Add by Email]      | Items: (empty)                      |
+| INVITE LIST: [name/email] [Add]         |                                    |
+|                                         |                                    |
+| ACTIONS                                 |                                    |
+| [Back] [Continue] [Skip Invite]         |                                    |
++-----------------------------------------+------------------------------------+
 +------------------------------------------------------------------------------+
 ```
 
