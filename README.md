@@ -1,8 +1,8 @@
-# Shopping List Aggregator
+# One List
 
 **One list. Every store. Real money control.**
 
-A shared shopping list app that turns chaotic household needs into a smart, budget-aware, shoppable plan—across any store, any household, or any group.
+A budget-aware shared shopping platform that turns chaotic household needs into a smart, shoppable plan—across any store, any household, or any group.
 
 ---
 
@@ -136,24 +136,46 @@ One shared list with multiple views:
 
 ---
 
-## Getting Started
+## Documentation
 
-This repository contains comprehensive documentation:
+This repository contains comprehensive documentation organized in `/docs/`:
 
+### Master Plan
 | Document | Description |
 |----------|-------------|
-| [FEATURES.md](./FEATURES.md) | Detailed feature specifications |
-| [ARCHITECTURE.md](./ARCHITECTURE.md) | Technical design and system architecture |
-| [ROADMAP.md](./ROADMAP.md) | Phased implementation plan with timelines |
-| [MVP_SPEC.md](./MVP_SPEC.md) | Minimum viable product definition |
-| [MARKET_ANALYSIS.md](./MARKET_ANALYSIS.md) | Market research and competitive analysis |
+| [MASTER_PLAN.md](./docs/MASTER_PLAN.md) | **Complete project plan** - architecture, features, wireframes, implementation roadmap |
+
+### Planning
+| Document | Description |
+|----------|-------------|
+| [MVP_SPEC.md](./docs/planning/MVP_SPEC.md) | MVP feature definition and success metrics |
+| [ROADMAP.md](./docs/planning/ROADMAP.md) | Implementation milestones |
+| [EXECUTION_CHECKLIST.md](./docs/planning/EXECUTION_CHECKLIST.md) | Development checklist |
+
+### Architecture
+| Document | Description |
+|----------|-------------|
+| [ARCHITECTURE.md](./docs/architecture/ARCHITECTURE.md) | Technical design and system architecture |
+| [PAGES_COMPONENTS_PLAN.md](./docs/architecture/PAGES_COMPONENTS_PLAN.md) | Route structure and component breakdown |
+
+### UX
+| Document | Description |
+|----------|-------------|
+| [WIREFRAMES.md](./docs/ux/WIREFRAMES.md) | ASCII wireframes for UI layouts |
+| [SITEMAP.md](./docs/ux/SITEMAP.md) | Full route map with feature flags |
+
+### Research
+| Document | Description |
+|----------|-------------|
+| [FEATURES.md](./docs/research/FEATURES.md) | Detailed feature specifications |
+| [MARKET_ANALYSIS.md](./docs/research/MARKET_ANALYSIS.md) | Market research and competitive analysis |
 
 ---
 
 ## Status
 
-**Phase:** Documentation and Planning
-**Next Milestone:** MVP Development
+**Phase:** Ready for Development
+**Approach:** Full feature set at launch - no phased rollout
 
 ---
 
