@@ -32,7 +32,7 @@ It is a zoom-level implementation guide for docs/PRODUCT_MAP.md.
 - `/signup`
   - Components: AuthForm
 - `/onboarding`
-  - Components: GroupCreatePanel, ListCreatePanel, BudgetPrompt, InviteLinkPanel
+  - Components: StepRail, GroupNameInput, ListNameInput, BudgetInput, InviteLinkPanel, InviteMemberList, LivePreviewPanel, PrimaryActionBar
 
 ### App Home
 

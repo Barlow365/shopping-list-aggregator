@@ -35,8 +35,8 @@
 |  /privacy /terms                            |                                 |
 | Auth                                       | MODES (ALL LENSES ON SAME LIST)  |
 |  /login /signup /onboarding                | Items | Stores | Budget | Shop   |
-|                                            | Receipts | History | Voice       |
-|                                            | Recipes | Recurring | Delivery   |
+|   Onboarding: step rail + live preview     | Receipts | History | Voice       |
+|   Steps: group -> list -> budget -> invite | Recipes | Recurring | Delivery   |
 |                                            | Pooling | Controls | Upgrades    |
 +--------------------------------------------+---------------------------------+
 | CAPTURE (LIST LENS)                         | DECIDE (LIST LENS)              |

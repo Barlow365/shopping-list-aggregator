@@ -700,7 +700,7 @@ Reimbursement needed:
 - All pages render (no stubs, full implementations)
 - States: empty, error, offline, and sync conflict states
 - Testing: route smoke tests + layout snapshot
-- Auth: signup, login, onboarding, invite flow
+- Auth: signup, login, onboarding step rail + invite flow
 
 **Exit Criteria:**
 - [ ] Every route renders with full UI
@@ -1600,30 +1600,23 @@ Each phase builds on the previous. Every phase includes: implementation, tests, 
 │
 ├── /login                  → Auth: Sign in
 ├── /signup                 → Auth: Create account
-├── /onboarding             → Auth: Initial setup (create group, first list)
-│
-├── /home                   → Dashboard: Active list snapshot, quick actions
-│
-├── /groups                 → Groups: List of all groups (households)
-│   └── /groups/[groupId]   → Group detail: Members, settings, invite
-│
-├── /lists/[listId]         → Redirect to /items
-│   ├── /items              → Main list view with quick-add + budget spine
-│   ├── /stores             → Items grouped by store + unassigned bucket
-│   ├── /budget             → Budget panel, price memory, forecasting
-│   ├── /shop               → Full-screen shopping mode (in-store)
-│   ├── /receipts           → Receipt upload, OCR matching, budget vs actual
-│   ├── /history            → Activity log for this list
-│   ├── /voice              → Voice capture with NLP parsing
-│   ├── /recipes            → Recipe cards, add ingredients to list
-│   ├── /recurring          → Recurring item rules + forecasting
-│   ├── /delivery           → Export list, Instacart/DoorDash integration
-│   ├── /pooling            → Group buying, cost splitting, assignments
-│   └── /controls           → Approval rules, spending caps
-│
-├── /settings               → User preferences, account, notifications
-│
-└── /help                   → FAQ, support contact
+├── /onboarding
++------------------------------------------------------------------------------+
+| HEADER: Back | Onboarding | Step 1 of 4                                      |
++------------------------------------------------------------------------------+
+| PROGRESS: [Group]--[List]--[Budget]--[Invite]                                |
++-----------------------------------------+------------------------------------+
+| SETUP PANEL                             | LIVE PREVIEW                       |
+| GROUP NAME [________________]           | LIST: Weekly Groceries             |
+| LIST NAME  [________________]           | Budget: $150 (optional)             |
+| BUDGET     [$____] (skip ok)            | Members: You                        |
+| INVITE LINK [Copy]  [Add by Email]      | Items: (empty)                      |
+| INVITE LIST: [name/email] [Add]         |                                    |
+|                                         |                                    |
+| ACTIONS                                 |                                    |
+| [Back] [Continue] [Skip Invite]         |                                    |
++-----------------------------------------+------------------------------------+
++------------------------------------------------------------------------------+
 ```
 
 ### Complete Page Index (27 Routes)
@@ -1638,7 +1631,7 @@ Each phase builds on the previous. Every phase includes: implementation, tests, 
 | 6 | `/terms` | Terms of service | 8 |
 | 7 | `/login` | Sign in | 1 |
 | 8 | `/signup` | Create account | 1 |
-| 9 | `/onboarding` | Initial setup | 1 |
+| 9 | `/onboarding` | Initial setup (step rail + live preview) | 1 |
 | 10 | `/home` | Dashboard | 4 |
 | 11 | `/groups` | Groups list | 4 |
 | 12 | `/groups/[groupId]` | Group detail | 4 |

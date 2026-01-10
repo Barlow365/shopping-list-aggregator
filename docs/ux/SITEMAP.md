@@ -8,6 +8,7 @@
 | ENTRY > Public                          | /  /how-it-works  /features         |
 |                                         | /pricing  /privacy  /terms           |
 | ENTRY > Auth                            | /login  /signup  /onboarding         |
+|                                         | onboarding: step rail + live preview |
 +----------------------------------------+-------------------------------------+
 | CORE OBJECT > Home                      | /app/home                            |
 | CORE OBJECT > Groups                    | /app/groups  /app/groups/:groupId    |
