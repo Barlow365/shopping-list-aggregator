@@ -9,7 +9,7 @@ The system is ITEM-FIRST.
 4) LISTS are GENERATED VIEWS of items based on context.
 5) LISTS only become concrete when the user is preparing to SHOP.
 6) TRIPS are time-bound shopping executions generated from lists.
-7) GROUP EFFICIENCY is achieved by pooling items before store commitment.
+7) PRICE MEMORY creates a learning loop (receipts update future estimates).
 
 Every doc must link back here as the source of truth.
 
@@ -60,7 +60,13 @@ XO defines how it feels and must bind to ESW route + state + action.
 - When a user goes to Target, the system surfaces eligible items from all prior intent.
 - No item is trapped inside a store list.
 
-## XO: Collaboration Canvas (FUTURE)
-- Route placeholder: /groups/:groupId (not implemented)
-- Binds to ESW route once group routes exist.
-- Overlay elements: avatars, approvals, discussion pins.
+## XO: Collaboration Canvas (Phase 2)
+**Status**: Deferred to Phase 2 (post-MVP)
+
+**Rationale**: Groups add complexity. MVP focuses on single-user loop (capture → trip → receipt → price memory). Group features validate only after proving core loop works.
+
+**When Ready**:
+- Routes: /groups/:groupId, /groups/:groupId/members
+- Schema: groups, group_members tables (see ARCHITECTURE.md)
+- Permissions: Role-based (admin can delete, members can view/edit)
+- Overlay elements: avatars, approvals, discussion pins
